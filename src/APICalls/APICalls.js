@@ -8,4 +8,15 @@ const fetchCall = (URL) => {
   })
 }
 
-export { fetchCall }
+const fetchUserData =  async (url, options) => {
+  const response = await fetch(url, options)
+  if(response.ok) {
+    const parsedData = await response.json()
+    return parsedData;
+  } else {
+    console.log("nope")
+  }
+}
+
+
+export { fetchCall, fetchUserData }

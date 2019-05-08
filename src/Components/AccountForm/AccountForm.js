@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import { fetchCall } from '../../APICalls/APICalls';
+import { fetchUserData } from '../../APICalls/APICalls';
+import { userLogin} from '../../Actions';
+
 
 
 
@@ -8,21 +10,38 @@ class AccountForm extends Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      status: ''
     }
   }
 
   handleChange = (e) => {
+    ///make toLower
     this.setState({
-      [e.target.type]: e.target.value
+      [e.target.type]: e.target.value.toLowerCase()
     })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
-    fetchCall()
-    .then(result => console.log(result))
-    .catch(error => console.log(error))
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const url = 'http://localhost:3000/api/users'
+    const userInput = this.state
+    const userOptionObject = {
+      method: "POST",
+      body: JSON.stringify(userInput),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    const response = await fetchUserData(url, userOptionObject)
+    if(response.status === 'success') {
+      userLogin(response.data)
+      console.log('hooray')
+    } else {
+      console.log('No such account Exists')
+      
+    }
+    this.setState({ status: response.status })
   }
 
   render() {
