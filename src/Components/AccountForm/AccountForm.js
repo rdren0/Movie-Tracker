@@ -37,6 +37,7 @@ class AccountForm extends Component {
     if(response.status === 'success') {
       userLogin(response.data)
       console.log('hooray')
+      alert('Login successful')
     } else {
       console.log('No such account Exists')
       
