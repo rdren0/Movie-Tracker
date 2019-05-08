@@ -1,0 +1,14 @@
+@import '../../Utilities/_Variables.scss';
+
+img {
+  height: 150px;
+}
+
+.header {
+  background: $primary-color;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
