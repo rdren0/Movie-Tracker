@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React,{ Component } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import { apiKey } from '../../apiKey.js';
@@ -28,11 +28,13 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='app-container'>
         <Header/>
-        <Link to="/Login"><button> Log In</button></Link>
-        <Link to="/Movies"><button> Browse </button></Link>
-        <Route exact path="/Login" component={AccountForm}/>
+        <section className='btn-container'>
+          <Link to="/Login"><button> Log In</button></Link>
+          <Link to="/Movies"><button> Browse </button></Link>
+          <Route exact path="/Login" component={AccountForm}/>
+        </section>
         <Route exact path="/Movies" component={CardContainer}/>
       </div>
     );
