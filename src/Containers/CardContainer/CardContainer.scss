@@ -1,0 +1,37 @@
+@import '../../Utilities/_Variables.scss';
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.movie-card {
+  max-width: 45%;
+  min-width: 45%;
+  margin: 10px;
+  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 2fr;
+  grid-template-areas: 
+    'poster title'
+    'poster overview';
+  border: 1px solid $primary-color;
+}
+
+.movie-title {
+  grid-area: title;
+  text-align: center;
+}
+
+.movie-poster {
+  grid-area: poster;
+  height: 400px;
+}
+
+.movie-overview {
+  grid-area: overview;
+  margin: 0 10px;
+}
