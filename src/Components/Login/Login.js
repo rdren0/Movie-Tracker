@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import { fetchUserData } from '../../APICalls/APICalls';
 import { userLogin, addUser } from '../../Actions';
 import './Login.scss';
-
-
-
+import { connect } from 'react-redux'; 
 
 
 class Login extends Component {
@@ -36,8 +34,7 @@ class Login extends Component {
     }
     const response = await fetchUserData(url, userOptionObject)
     if(response.status === 'success') {
-      userLogin(response.data)
-      alert('Login successful')
+      this.props.addCurrentUser(response.data)
     } else {
       alert('Email or password is incorrect')
       
@@ -57,4 +54,9 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+
+const mapDispatchToProps = (dispatch) => ({
+  addCurrentUser: (user) => dispatch(userLogin(user))
+})
+
+export default connect(null, mapDispatchToProps)(Login);

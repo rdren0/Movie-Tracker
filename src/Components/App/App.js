@@ -21,7 +21,7 @@ class App extends Component {
   }
 
   fetchCallFun = () =>{
-     fetchCall(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}&primary_release_date.gte=2019-01-01`)
+     fetchCall(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`)
     .then(result => this.props.addMovies(result.results))
     .catch(error => console.log(error))
   }
