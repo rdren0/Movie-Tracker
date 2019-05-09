@@ -15,6 +15,7 @@ const fetchUserData =  async (url, options) => {
     return parsedData;
   } else {
     console.log("nope")
+    return 'nope'
   }
 }
 

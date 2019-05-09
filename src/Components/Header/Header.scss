@@ -6,9 +6,47 @@ img {
 
 .header {
   background: $primary-color;
+  display: flex;
+  justify-content: space-between;
 }
 
 .logo {
   display: flex;
   align-items: center;
 }
+
+.header nav {
+  display: flex;
+}
+
+.nav-button h4 {
+  transform: skew(-20deg);
+}
+
+.nav-button {
+  height: 150px;
+  width: 150px;
+  transform: skew(20deg);
+  background: $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $main-text;
+  border-right: 0;
+  text-decoration: none;
+  color: $main-text;
+  font-size: 22px;
+
+  &:last-child {
+    border-right: 1px solid $main-text
+  }
+
+  &:hover {
+    background: $primary-hover;
+  }
+
+  &:focus {
+    background: $primary-hover;
+  }
+}
+

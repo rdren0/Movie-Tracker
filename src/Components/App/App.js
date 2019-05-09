@@ -12,7 +12,6 @@ import { connect } from 'react-redux';
 class App extends Component {
  constructor(props) {
     super(props);
-
   }
 
   componentDidMount = () => {
@@ -31,11 +30,9 @@ class App extends Component {
       <div className='app-container'>
         <Header/>
         <section className='btn-container'>
-          <Link to="/Login"><button> Log In</button></Link>
-          <Link to="/Movies"><button> Browse </button></Link>
           <Route exact path="/Login" component={AccountForm}/>
         </section>
-        <Route exact path="/Movies" component={CardContainer}/>
+        <Route exact path="/" component={CardContainer}/>
       </div>
     );
   }
