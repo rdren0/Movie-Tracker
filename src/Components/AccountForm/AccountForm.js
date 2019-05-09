@@ -16,7 +16,6 @@ class AccountForm extends Component {
   }
 
   handleChange = (e) => {
-    ///make toLower
     this.setState({
       [e.target.type]: e.target.value.toLowerCase()
     })
