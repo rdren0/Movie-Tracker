@@ -21,7 +21,7 @@ class Login extends Component {
     })
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
     const url = 'http://localhost:3000/api/users'
     const userInput = this.state
@@ -32,14 +32,10 @@ class Login extends Component {
         "Content-Type": "application/json"
       }
     }
-    const response = await fetchUserData(url, userOptionObject)
-    if(response.status === 'success') {
-      this.props.addCurrentUser(response.data)
-    } else {
-      alert('Email or password is incorrect')
-      
-    }
-    this.setState({ status: response.status })
+    fetchUserData(url, userOptionObject)
+    .then(results => this.props.addCurrentUser(results.data) )
+    .then(results => this.setState({ status: results.status }))
+    .catch(error => alert('Email or password is incorrect') )
   }
 
   render() {

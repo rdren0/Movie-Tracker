@@ -8,39 +8,43 @@ const fetchCall = (URL) => {
   })
 }
 
-const fetchUserData =  async (url, options) => {
-  const response = await fetch(url, options)
-  if(response.ok) {
-    const parsedData = await response.json()
-    return parsedData;
-  } else {
-    console.log("nope")
-    return 'nope'
-  }
+
+const fetchUserData = (url, options) => {
+  return fetch(url, options)
+  .then(response => {
+     if(!response.ok) {
+      alert("Email or password is incorrect")
+     }else{
+      return response.json()
+     }
+  })
 }
 
-const addUserData =  async (url, options) => {
-  const response = await fetch(url, options)
-  if(response.ok) {
-    const parsedData = await response.json()
-    alert("Account created")
-    return parsedData;
-  } else {
-    alert("Account already exists, please log in")
-    return 'nope'
-  }
+
+const addUserData = (url, options) => {
+  fetch(url, options)
+  .then(response => {
+     if(!response.ok) {
+      alert("Account already exists, please log in")
+     }else{
+      alert("Account created")
+      return response.json()
+     }
+  })
 }
 
-const favoriteMovieData = async (url, options) => {
-  const response = await fetch(url, options)
-  if(response.ok) {
-    const parsedData = await response.json()
-    console.log('Favorited!')
-    return parsedData;
-  } else {
-    console.log('nope')
-    return 'nope'
-  }
+
+const favoriteMovieData = (url, options) => {
+  fetch(url, options)
+   .then(response => {
+     if(!response.ok) {
+      alert("You must be logged in to favorite a movie!")
+      console.log('Tried to favorite w/o logging in')
+     }else{
+      console.log('Favorited!')
+      return response.json()
+     } 
+  })
 }
 
 
