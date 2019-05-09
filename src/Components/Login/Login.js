@@ -34,8 +34,7 @@ class Login extends Component {
     }
     const response = await fetchUserData(url, userOptionObject)
     if(response.status === 'success') {
-      this.props.addCurrentUser(response.data.user)
-      alert('Login successful')
+      this.props.addCurrentUser(response.data)
     } else {
       alert('Email or password is incorrect')
       

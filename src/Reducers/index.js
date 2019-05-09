@@ -4,7 +4,7 @@ import { currentUserReducer } from './currentUserReducer'
 
 const rootReducer= combineReducers({
   movies: moviesReducer,
-  currenUser: currentUserReducer
+  currentUser: currentUserReducer
 })
 
 export default rootReducer;
