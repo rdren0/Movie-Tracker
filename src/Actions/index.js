@@ -7,3 +7,8 @@ export const userLogin = (user) => ({
   type: 'USER_LOG_IN',
   user
 })
+
+export const addUser = (user) => ({
+  type: 'ADD_USER',
+  user
+})

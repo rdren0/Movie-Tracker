@@ -19,5 +19,17 @@ const fetchUserData =  async (url, options) => {
   }
 }
 
+const addUserData =  async (url, options) => {
+  const response = await fetch(url, options)
+  if(response.ok) {
+    const parsedData = await response.json()
+    alert("Account created")
+    return parsedData;
+  } else {
+    alert("Account already exists, please log in")
+    return 'nope'
+  }
+}
 
-export { fetchCall, fetchUserData }
+
+export { fetchCall, fetchUserData, addUserData }

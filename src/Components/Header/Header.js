@@ -21,6 +21,7 @@ class Header extends Component {
           <NavLink to="/" className='nav-button'><h4>Browse</h4></NavLink>
           <NavLink to="/" className='nav-button'><h4>Recent</h4></NavLink>
           <NavLink to="/Login" className='nav-button'><h4>Log In</h4></NavLink>
+          <NavLink to="/SignUp" className='nav-button'><h4>Sign Up</h4></NavLink>
         </nav>
       </div>
     );

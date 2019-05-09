@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { fetchUserData } from '../../APICalls/APICalls';
-import { userLogin} from '../../Actions';
+import { userLogin, addUser } from '../../Actions';
 
 
 
 
-class AccountForm extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,10 +35,9 @@ class AccountForm extends Component {
     const response = await fetchUserData(url, userOptionObject)
     if(response.status === 'success') {
       userLogin(response.data)
-      console.log('hooray')
       alert('Login successful')
     } else {
-      console.log('No such account Exists')
+      alert('Email or password is incorrect')
       
     }
     this.setState({ status: response.status })
@@ -56,4 +55,4 @@ class AccountForm extends Component {
     );
   }
 }
-export default AccountForm;
+export default Login;
