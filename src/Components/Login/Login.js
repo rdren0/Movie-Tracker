@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { fetchUserData } from '../../APICalls/APICalls';
 import { userLogin, addUser } from '../../Actions';
+import './Login.scss';
+
 
 
 
@@ -46,9 +48,9 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleChange} type="email" placeholder="Email" value ={this.state.email}/>
-          <input onChange={this.handleChange} type="password" placeholder="Password" value={this.state.password}/>
+        <form onSubmit={this.handleSubmit} className='login-form'>
+          <input className='email' onChange={this.handleChange} type="email" placeholder="Email" value ={this.state.email}/>
+          <input className='password' onChange={this.handleChange} type="password" placeholder="Password" value={this.state.password}/>
           <button> Sign in </button> 
         </form>
       </div>

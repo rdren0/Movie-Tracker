@@ -21,6 +21,7 @@ img {
 
 .nav-button h4 {
   transform: skew(-20deg);
+  text-align: center;
 }
 
 .nav-button {
@@ -44,9 +45,10 @@ img {
   &:hover {
     background: $primary-hover;
   }
+}
 
-  &:focus {
+.current-nav {
     background: $primary-hover;
   }
-}
+
 
