@@ -18,10 +18,9 @@ class Header extends Component {
           <img src={Logo} alt='Movie Tracker Logo' />
         </Link>
         <nav>
-          <NavLink to="/" className='nav-button'><h4>Browse</h4></NavLink>
-          <NavLink to="/" className='nav-button'><h4>Recent</h4></NavLink>
-          <NavLink to="/Login" className='nav-button'><h4>Log In</h4></NavLink>
-          <NavLink to="/SignUp" className='nav-button'><h4>Sign Up</h4></NavLink>
+          <NavLink exact={true} to="/" activeClassName='current-nav' className='nav-button'><h4>New Movies</h4></NavLink>
+          <NavLink activeClassName='current-nav' to="/Login" className='nav-button'><h4>Log In</h4></NavLink>
+          <NavLink activeClassName='current-nav' to="/SignUp" className='nav-button'><h4>Sign Up</h4></NavLink>
         </nav>
       </div>
     );

@@ -1,0 +1,19 @@
+@import '../../Utilities/_Variables.scss';
+
+.signup-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 425px;
+  margin-top: 25px;
+
+  input {
+    padding: 5px;
+    margin: 5px 10px;
+  }
+
+  button {
+    padding: 5px;
+    margin: 5px 10px;
+  }
+}

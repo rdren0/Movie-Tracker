@@ -1,0 +1,32 @@
+@import '../../Utilities/_Variables.scss';
+
+
+.login-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 425px;
+  margin-top: 25px;
+  grid-template-areas: 
+  "email password"
+  "button button";
+
+  input {
+    padding: 5px;
+    margin: 5px 10px;
+  }
+
+  button {
+    padding: 5px;
+    margin: 5px 10px;
+    grid-area: button;
+  }
+}
+
+.email {
+  grid-area: email;
+}
+
+.password {
+  grid-area: password;
+}

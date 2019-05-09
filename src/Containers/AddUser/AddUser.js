@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './AddUser.scss'
 
 import { addUserData } from '../../APICalls/APICalls';
 
@@ -10,7 +11,7 @@ class AddUser extends Component {
     this.state = {
       email: '',
       password: '',
-       name: '',
+      name: '',
       status: ''
     }
   }
@@ -44,13 +45,12 @@ class AddUser extends Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.handleAddUser}>
-      <h3>Make an account</h3>
-          <input onChange={this.handleChange} name="name" placeholder="Name" value ={this.state.name}/>
-          <input onChange={this.handleChange} name="email" placeholder="Email" value ={this.state.email}/>
-          <input onChange={this.handleChange} name="password" placeholder="Password" value={this.state.password}/>
-            <button> Sign Up </button>
-      </form>
+        <form onSubmit={this.handleAddUser} className='signup-form'>
+            <input className='name-input' onChange={this.handleChange} name="name" placeholder="Name" value ={this.state.name}/>
+            <input className='email-input' onChange={this.handleChange} name="email" placeholder="Email" value ={this.state.email}/>
+            <input className='password-input' onChange={this.handleChange} name="password" placeholder="Password" value={this.state.password}/>
+            <button> Create Account </button>
+        </form>
       </div>
     );
   }
