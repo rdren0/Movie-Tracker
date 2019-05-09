@@ -11,6 +11,11 @@ class CardContainer extends Component {
     super(props);
   }
 
+  favoriteMovie = (movie) => {
+    console.log(movie)
+    const url = 'http://localhost:3000/api/users/favorites/new'
+  }
+
   displayCards = () => {
     return this.props.movies.map(movie => 
       <div key={movie.id} className='movie-card'>
@@ -21,7 +26,8 @@ class CardContainer extends Component {
         </div>
         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='img poster' className='movie-poster'/>
         <div className='movie-overview'>
-          <ShowMore lines={7}>{movie.overview}</ShowMore>
+          <ShowMore lines={6}>{movie.overview}</ShowMore>
+          <button onClick={() => this.favoriteMovie(movie)}>Favorite</button>
         </div>
       </div>
     )

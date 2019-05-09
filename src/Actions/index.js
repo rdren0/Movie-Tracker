@@ -4,8 +4,9 @@ export const addMovies = (movies) =>({
 })
 
 export const userLogin = (user) => ({
-  type: 'USER_LOG_IN',
-  user
+  type: 'USER_LOGIN', 
+  id: user.id,
+  name: user.name
 })
 
 export const addUser = (user) => ({
