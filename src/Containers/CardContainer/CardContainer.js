@@ -34,7 +34,7 @@ class CardContainer extends Component {
 
   displayCards = () => {
     return this.props.movies.map(movie => 
-      <MovieCard {...movie} favoriteMovie = {this.favoriteMovie}/>
+      <MovieCard {...movie} favoriteMovie = {this.favoriteMovie} key={movie.id}/>
     )
   }
 
