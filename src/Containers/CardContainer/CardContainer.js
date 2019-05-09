@@ -34,18 +34,7 @@ class CardContainer extends Component {
 
   displayCards = () => {
     return this.props.movies.map(movie => 
-      <div key={movie.id} className='movie-card'>
-        <div className='movie-title'>
-          <p>{movie.vote_average}</p>
-          <h4>{movie.title}</h4>
-          <p>{movie.release_date}</p>
-        </div>
-        <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt='img poster' className='movie-poster'/>
-        <div className='movie-overview'>
-          <ShowMore lines={6}>{movie.overview}</ShowMore>
-          <button onClick={() => this.favoriteMovie(movie)}>Favorite</button>
-        </div>
-      </div>
+      <MovieCard {...movie} favoriteMovie = {this.favoriteMovie}/>
     )
   }
 
