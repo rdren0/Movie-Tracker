@@ -3,8 +3,9 @@ import React,{ Component } from 'react';
 import { Route, NavLink, Link } from 'react-router-dom';
 import { apiKey } from '../../apiKey.js';
 import Header from '../Header/Header';
+import Login from '../Login/Login';
 import CardContainer from '../../Containers/CardContainer/CardContainer.js';
-import AccountForm from '../AccountForm/AccountForm';
+import AddUser from '../../Containers/AddUser/AddUser';
 import { fetchCall } from '../../APICalls/APICalls';
 import { addMovies } from '../../Actions';
 import { connect } from 'react-redux';
@@ -30,7 +31,8 @@ class App extends Component {
       <div className='app-container'>
         <Header/>
         <section className='btn-container'>
-          <Route exact path="/Login" component={AccountForm}/>
+          <Route exact path="/Login" component={Login}/>
+          <Route exact path="/SignUp" component={AddUser}/>
         </section>
         <Route exact path="/" component={CardContainer}/>
       </div>
