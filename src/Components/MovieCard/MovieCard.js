@@ -3,6 +3,8 @@ import ShowMore from 'react-show-more';
 
 
  const MovieCard = (movie) => {
+
+  
   const {vote_average, title, id, release_date, poster_path, overview, favoriteMovie } = movie;
   return (
       <div className='movie-card'>
