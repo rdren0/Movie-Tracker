@@ -43,12 +43,13 @@ class CardContainer extends Component {
 
   newPage = () =>{
     let value = this.props.page;
-  this.props.nextPage(this.props.page)
-  this.props.fetchCallFun(value+=1)
+    this.props.nextPage(this.props.page)
+    this.props.fetchCallFun(value+=1)
+    window.scrollTo(0, 0);
+
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         <Filter/>
