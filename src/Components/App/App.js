@@ -20,8 +20,8 @@ class App extends Component {
 
   }
 
-  fetchCallFun = () =>{
-     fetchCall(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${apiKey}`)
+  fetchCallFun = (page=1) =>{
+     fetchCall(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=${page}&api_key=${apiKey}`)
     .then(result => this.props.addMovies(result.results))
     .catch(error => console.log(error))
   }
@@ -34,14 +34,15 @@ class App extends Component {
           <Route exact path="/Login" component={Login}/>
           <Route exact path="/SignUp" component={AddUser}/>
         </section>
-        <Route exact path="/" component={CardContainer}/>
+        <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun}/>}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) =>({
-  movies: state.movies
+  movies: state.movies,
+  page: state.page
 })
 
 const mapDispatchToProps = (dispatch) =>({

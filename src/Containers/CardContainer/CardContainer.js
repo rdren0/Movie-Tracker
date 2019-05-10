@@ -6,6 +6,8 @@ import './CardContainer.scss'
 import ShowMore from 'react-show-more';
 import { favoriteMovieData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
+import { nextPage } from '../../Actions'
+
 
 class CardContainer extends Component {
 
@@ -32,19 +34,30 @@ class CardContainer extends Component {
     }
   }
 
+
   displayCards = () => {
     return this.props.movies.map(movie => 
       <MovieCard {...movie} favoriteMovie = {this.favoriteMovie} key={movie.id}/>
     )
   }
 
+  newPage = () =>{
+    let value = this.props.page;
+    this.props.nextPage(this.props.page)
+    this.props.fetchCallFun(value+=1)
+    window.scrollTo(0, 0);
+
+  }
+
   render() {
     return (
       <div>
         <Filter/>
+        <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
         <div className='card-container'>
           {this.displayCards()}
         </div>
+        <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
       </div>
     );
   }
@@ -52,7 +65,14 @@ class CardContainer extends Component {
 
 const mapStateToProps = (state) =>({
   user: state.currentUser,
-  movies: state.movies
+  movies: state.movies,
+  page: state.page
+})
+const mapDispatchToProps = (dispatch) =>({
+  nextPage: (value) => dispatch(nextPage(value)),
+  // previousPage: (value) => dispatch(previousPage(value))
 })
 
-export default connect(mapStateToProps)(CardContainer);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);

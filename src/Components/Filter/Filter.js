@@ -7,7 +7,15 @@ class Filter extends Component {
 
   render() {
     return (
-      <div>A filter bar</div>
+      <div className="search-bar">
+        <select>
+          <option value="action">Genre</option>
+          <option value="action">Action</option>
+          <option value="adventure">Adventure</option>
+          <option value="comedy">Comedy</option>
+          <option value="horror">Horror</option>
+        </select>
+      </div>
     );
   }
 }
