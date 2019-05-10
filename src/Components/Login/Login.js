@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { fetchUserData } from '../../APICalls/APICalls';
-import { userLogin, addUser } from '../../Actions';
+import { fetchUserData, fetchFavorites } from '../../APICalls/APICalls';
+import { userLogin, addUser, setFavorites } from '../../Actions';
 import './Login.scss';
 import { connect } from 'react-redux'; 
 
@@ -34,8 +34,16 @@ class Login extends Component {
     }
     fetchUserData(url, userOptionObject)
     .then(results => this.props.addCurrentUser(results.data) )
-    .then(results => this.setState({ status: results.status }))
+    .then(results => this.setState({ status: results.status }, () => this.getFavoriteMovies()))
     .catch(error => alert('Email or password is incorrect') )
+
+  }
+
+  getFavoriteMovies = () => {
+    const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`
+    fetchFavorites(url)
+    .then(response => this.props.setFavorites(response.data))
+    .catch(error => error)
   }
 
   render() {
@@ -51,8 +59,13 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => ({
-  addCurrentUser: (user) => dispatch(userLogin(user))
+const mapStateToProps = (state) => ({
+  user: state.currentUser
 })
 
-export default connect(null, mapDispatchToProps)(Login);
+const mapDispatchToProps = (dispatch) => ({
+  addCurrentUser: (user) => dispatch(userLogin(user)),
+  setFavorites: (favorites) => dispatch(setFavorites(favorites))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
