@@ -1,17 +1,11 @@
-import React, { Component} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 import Logo from '../../Images/movie-tracker-logo.png';
 import './Header.scss'
-import { NavLink } from 'react-router-dom'
 
 
-class Header extends Component {
-  
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+const Header = () => {
     return (
       <div className='header'>
         <Link to="/" className='logo'>
@@ -24,7 +18,6 @@ class Header extends Component {
         </nav>
       </div>
     );
-  }
 }
 
 
