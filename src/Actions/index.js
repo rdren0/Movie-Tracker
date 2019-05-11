@@ -1,5 +1,6 @@
 export const addMovies = (movies) =>({
   type:'ADD_MOVIES',
+  favorited: false,
   movies
 })
 
@@ -25,5 +26,6 @@ export const previousPage = (value) => ({
 
 export const setFavorites = (favorites) => ({
   type: 'SET_FAVORITES',
+  favorited: false,
   favorites
 })

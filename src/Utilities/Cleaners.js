@@ -10,3 +10,11 @@ export const cleanForFavorite = (movie, id) => {
     overview 
   })
 }
+
+export const checkIfFavorited = (movie, favorites) => {
+  if(!movie.favorited) {
+    return favorites.some(favorite => favorite.movie_id === movie.id)
+  } else {
+    return true;
+  }
+}
