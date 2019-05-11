@@ -21,18 +21,4 @@ const fetchUserData = (url, options) => {
 }
 
 
-const favoriteMovieData = (url, options) => {
-   fetch(url, options)
-   .then(response => {
-     if(!response.ok) {
-      alert("You must be logged in to favorite a movie!")
-      console.log('Tried to favorite w/o logging in')
-     }else{
-      console.log('Favorited!')
-      return response.json()
-     } 
-  })
-}
-
-
-export { fetchCall, fetchUserData, favoriteMovieData }
+export { fetchCall, fetchUserData }

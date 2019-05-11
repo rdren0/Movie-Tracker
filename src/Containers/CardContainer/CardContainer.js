@@ -3,7 +3,7 @@ import Filter from '../../Components/Filter/Filter';
 import MovieCard from '../../Components/MovieCard/MovieCard'
 import { connect } from 'react-redux';
 import './CardContainer.scss'
-import { favoriteMovieData, fetchUserData } from '../../APICalls/APICalls';
+import { fetchUserData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
 import { nextPage, setFavorites } from '../../Actions'
 import NoFavorites from '../NoFavorites/NoFavorites'
