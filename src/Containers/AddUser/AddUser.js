@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AddUser.scss'
-import { addUserData } from '../../APICalls/APICalls';
+import { fetchUserData } from '../../APICalls/APICalls';
 
 
 class AddUser extends Component {
@@ -24,20 +24,16 @@ class AddUser extends Component {
 
   handleAddUser = (e) => {
     e.preventDefault();
-    const URL = 'http://localhost:3000/api/users/new'
-    try {
-      addUserData(URL, {
-        method: 'POST',
-        body: JSON.stringify(this.state),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      this.setState({ status: 'success' })
-      console.log('User Added')
-    } catch(error) {
-      console.log('Something went wrong')
+    const url = 'http://localhost:3000/api/users/new'
+    const userInput = this.state
+    const userOptionObject = {
+      method: 'POST',
+      body: JSON.stringify(userInput),
+      headers: {'Content-Type': 'application/json'}
     }
+    fetchUserData(url, userOptionObject)
+    .then(results => this.setState({ status: 'success'}))
+    .catch(error => console.log(error))
   }
 
   render() {
@@ -54,4 +50,4 @@ class AddUser extends Component {
   }
 }
 
-export default  AddUser
+export default AddUser
