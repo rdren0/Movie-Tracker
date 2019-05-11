@@ -30,11 +30,9 @@ class CardContainer extends Component {
         'Content-Type': 'application/json'
       }
     }
-    try{
-      favoriteMovieData(url, userOptionObject)
-    } catch(error) {
-      console.log(error)
-    }
+    fetchUserData(url, userOptionObject)
+      .then(result => result.status === 'success' ? this.props.setFavorites([...this.props.favorites, cleanedMovie]) : null)
+      .catch(error => console.log(error)) 
   }
 
 
@@ -62,14 +60,6 @@ class CardContainer extends Component {
 
   }
 
-  getFavoriteMovies = () => {
-    const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`
-    fetchUserData(url)
-    .then(result => this.props.setFavorites(result.data))
-    .then(result => this.toggleSource())
-    .catch(error => error)
-  }
-
   render() {
     let popup;
     if(this.state.showPopup) {
@@ -78,7 +68,7 @@ class CardContainer extends Component {
     return (
       <div>
         {popup}
-        <Filter getFavoriteMovies={this.getFavoriteMovies}/>
+        <Filter toggleSource={this.toggleSource}/>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
         <div className='card-container'>
           {this.displayCards()}

@@ -22,7 +22,7 @@ const fetchUserData = (url, options) => {
 
 
 const favoriteMovieData = (url, options) => {
-  fetch(url, options)
+   fetch(url, options)
    .then(response => {
      if(!response.ok) {
       alert("You must be logged in to favorite a movie!")
