@@ -1,12 +1,6 @@
 import React, {Component} from 'react';
 
 class Filter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filter: 'popular'
-    }
-  }
 
   render() {
     return (
@@ -20,6 +14,7 @@ class Filter extends Component {
           <option value="comedy">Comedy</option>
           <option value="horror">Horror</option>
         </select>
+        <button onClick={() => this.props.toggleSource()}>My Favorites</button>
       </div>
     );
   }

@@ -6,14 +6,16 @@ import './CardContainer.scss'
 import { favoriteMovieData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
 import { nextPage } from '../../Actions'
-
+import NoFavorites from '../NoFavorites/NoFavorites'
+ 
 
 class CardContainer extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      favorites: false
+      favorites: false,
+      showPopup: false
     }
   }
 
@@ -46,9 +48,11 @@ class CardContainer extends Component {
   }
 
   toggleSource = () => {
-    this.setState({
-      favorites: !this.state.favorites
-    })
+    if(this.props.favorites.length) {
+      this.setState({favorites: !this.state.favorites})
+    } else {
+      this.setState({showPopup: true})
+    }
   }
 
   newPage = () =>{
@@ -60,8 +64,13 @@ class CardContainer extends Component {
   }
 
   render() {
+    let popup;
+    if(this.state.showPopup) {
+      popup = <NoFavorites />
+    }
     return (
       <div>
+        {popup}
         <Filter toggleSource={this.toggleSource}/>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
         <div className='card-container'>
