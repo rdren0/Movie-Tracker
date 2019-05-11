@@ -14,7 +14,7 @@ class Filter extends Component {
           <option value="comedy">Comedy</option>
           <option value="horror">Horror</option>
         </select>
-        <button onClick={() => this.props.toggleSource()}>My Favorites</button>
+        <button onClick={() => this.props.getFavoriteMovies()}>My Favorites</button>
       </div>
     );
   }
