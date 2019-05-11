@@ -30,7 +30,7 @@ export const setFavorites = (favorites) => ({
   favorites
 })
 
-export const isLoggedIn = () => ({
+export const isLoggedIn = (bool) => ({
   type: 'IS_LOGGED_IN',
-  isLoggedIn: false
+  isLoggedIn: bool
 })
