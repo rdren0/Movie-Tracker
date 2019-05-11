@@ -3,7 +3,6 @@ import Filter from '../../Components/Filter/Filter';
 import MovieCard from '../../Components/MovieCard/MovieCard'
 import { connect } from 'react-redux';
 import './CardContainer.scss'
-import ShowMore from 'react-show-more';
 import { favoriteMovieData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
 import { nextPage } from '../../Actions'
@@ -39,13 +38,17 @@ class CardContainer extends Component {
 
 
   displayCards = () => {
-    return this.props.movies.map(movie => 
-      <MovieCard {...movie} favoriteMovie = {this.favoriteMovie} key={movie.id}/>
-    )
+    if(!this.state.favorites) {
+      return this.props.movies.map(movie => <MovieCard {...movie} favoriteMovie = {this.favoriteMovie} key={movie.id}/>)
+    } else {
+      return this.props.favorites.map(movie => <MovieCard {...movie} key={movie.id}/>)
+    }
   }
 
-  displayFavorites = () => {
-    return this.props.favorites.map(movie => <MovieCard {...movie} key={movie.id}/>)
+  toggleSource = () => {
+    this.setState({
+      favorites: !this.state.favorites
+    })
   }
 
   newPage = () =>{
@@ -57,19 +60,14 @@ class CardContainer extends Component {
   }
 
   render() {
-    let whatToRender = this.displayCards();
-    if(this.state.favorites) {
-      whatToRender = this.displayFavorites();
-    }
     return (
       <div>
-        <Filter/>
+        <Filter toggleSource={this.toggleSource}/>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
         <div className='card-container'>
-          {whatToRender}
+          {this.displayCards()}
         </div>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
-        <button onClick={() => this.setState({favorites: true})}>favs</button>
       </div>
     );
   }

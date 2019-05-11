@@ -1,6 +1,6 @@
 import './App.scss';
 import React,{ Component } from 'react';
-import { Route, NavLink, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { apiKey } from '../../apiKey.js';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -11,9 +11,6 @@ import { addMovies } from '../../Actions';
 import { connect } from 'react-redux';
 
 class App extends Component {
- constructor(props) {
-    super(props);
-  }
 
   componentDidMount = () => {
     this.fetchCallFun()
