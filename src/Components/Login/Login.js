@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { fetchUserData, fetchFavorites } from '../../APICalls/APICalls';
+import { fetchUserData } from '../../APICalls/APICalls';
 import { userLogin, setFavorites } from '../../Actions';
 import './Login.scss';
 import { connect } from 'react-redux'; 
@@ -35,13 +35,13 @@ class Login extends Component {
     fetchUserData(url, userOptionObject)
     .then(results => this.props.addCurrentUser(results.data) )
     .then(results => this.setState({ status: results.status }, () => this.getFavoriteMovies()))
-    .catch(error => alert('Email or password is incorrect') )
+    .catch(error => console.log(error))
 
   }
 
   getFavoriteMovies = () => {
     const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`
-    fetchFavorites(url)
+    fetchUserData(url)
     .then(response => this.props.setFavorites(response.data))
     .catch(error => error)
   }

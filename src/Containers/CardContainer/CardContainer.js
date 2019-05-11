@@ -32,9 +32,8 @@ class CardContainer extends Component {
     }
     try{
       favoriteMovieData(url, userOptionObject)
-      console.log('favorited')
     } catch(error) {
-      console.log('unable to favorite')
+      console.log(error)
     }
   }
 
