@@ -1,23 +1,50 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../Images/movie-tracker-logo.png';
 import './Header.scss'
+import { connect } from 'react-redux'
+import { userLogin, isLoggedIn } from '../../Actions';
 
+class Header extends Component {
 
-const Header = () => {
-    return (
-      <div className='header'>
-        <Link to="/" className='logo'>
-          <img src={Logo} alt='Movie Tracker Logo' />
-        </Link>
+  handleLogout = () => {
+    this.props.isLoggedIn(false)
+    this.props.addCurrentUser({})
+  }
+
+  render() {
+  let whatToRender
+  if(this.props.isLoggedIn) {
+    whatToRender =  
         <nav>
+          <NavLink exact={true} to="/" activeClassName='current-nav' className='nav-button'><h4>Browse</h4></NavLink>
+          <NavLink activeClassName='current-nav' onClick={this.handleLogout} to="/Login" className='nav-button'><h4>Log Out</h4></NavLink>
+        </nav>
+  } else { 
+    whatToRender = 
+      <nav>
           <NavLink exact={true} to="/" activeClassName='current-nav' className='nav-button'><h4>Browse</h4></NavLink>
           <NavLink activeClassName='current-nav' to="/Login" className='nav-button'><h4>Log In</h4></NavLink>
           <NavLink activeClassName='current-nav' to="/SignUp" className='nav-button'><h4>Sign Up</h4></NavLink>
         </nav>
-      </div>
-    );
+  };
+  return (
+    <div className='header'>
+      <Link to="/" className='logo'>
+        <img src={Logo} alt='Movie Tracker Logo' />
+      </Link>
+      {whatToRender}
+    </div>
+  )}
 }
 
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.isLoggedIn
+})
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+  isLoggedIn: (bool) => dispatch(isLoggedIn(bool)),
+  addCurrentUser: (user) => dispatch(userLogin(user))
+})
+
+export default connect(mapStateToProps)(Header);

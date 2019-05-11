@@ -1,6 +1,6 @@
 import './App.scss';
 import React,{ Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { apiKey } from '../../apiKey.js';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
@@ -28,8 +28,8 @@ class App extends Component {
       <div className='app-container'>
         <Header/>
         <section className='btn-container'>
-          <Route exact path="/Login" component={Login}/>
-          <Route exact path="/SignUp" component={AddUser}/>
+          <Route exact path="/Login" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<Login/>))}/>
+          <Route exact path="/SignUp" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<AddUser/>))}/>
         </section>
         <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun}/>}/>
       </div>
@@ -39,7 +39,9 @@ class App extends Component {
 
 const mapStateToProps = (state) =>({
   movies: state.movies,
-  page: state.page
+  page: state.page,
+  user: state.currentUser,
+  isLoggedIn: state.isLoggedIn
 })
 
 const mapDispatchToProps = (dispatch) =>({
