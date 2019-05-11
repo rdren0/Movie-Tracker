@@ -47,5 +47,16 @@ const favoriteMovieData = (url, options) => {
   })
 }
 
+const fetchFavorites = (url) => {
+  return fetch(url)
+   .then(response => {
+     if(!response.ok) {
+      console.log('did not fetch')
+     } else {
+      return response.json()
+     } 
+  })
+}
 
-export { fetchCall, fetchUserData, addUserData, favoriteMovieData }
+
+export { fetchCall, fetchUserData, addUserData, favoriteMovieData, fetchFavorites }

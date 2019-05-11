@@ -13,6 +13,9 @@ class CardContainer extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      favorites: false
+    }
   }
 
   favoriteMovie = (movie) => {
@@ -41,6 +44,10 @@ class CardContainer extends Component {
     )
   }
 
+  displayFavorites = () => {
+    return this.props.favorites.map(movie => <MovieCard {...movie} key={movie.id}/>)
+  }
+
   newPage = () =>{
     let value = this.props.page;
     this.props.nextPage(this.props.page)
@@ -50,14 +57,19 @@ class CardContainer extends Component {
   }
 
   render() {
+    let whatToRender = this.displayCards();
+    if(this.state.favorites) {
+      whatToRender = this.displayFavorites();
+    }
     return (
       <div>
         <Filter/>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
         <div className='card-container'>
-          {this.displayCards()}
+          {whatToRender}
         </div>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
+        <button onClick={() => this.setState({favorites: true})}>favs</button>
       </div>
     );
   }
@@ -66,7 +78,8 @@ class CardContainer extends Component {
 const mapStateToProps = (state) =>({
   user: state.currentUser,
   movies: state.movies,
-  page: state.page
+  page: state.page,
+  favorites: state.favorites
 })
 const mapDispatchToProps = (dispatch) =>({
   nextPage: (value) => dispatch(nextPage(value)),

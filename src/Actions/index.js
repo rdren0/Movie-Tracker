@@ -22,3 +22,8 @@ export const previousPage = (value) => ({
   type: 'PREVIOUS_PAGE',
   value,
 })
+
+export const setFavorites = (favorites) => ({
+  type: 'SET_FAVORITES',
+  favorites
+})
