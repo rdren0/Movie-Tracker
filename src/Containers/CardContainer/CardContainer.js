@@ -30,17 +30,37 @@ class CardContainer extends Component {
         'Content-Type': 'application/json'
       }
     }
-    fetchUserData(url, userOptionObject)
-      .then(result => result.status === 'success' ? this.props.setFavorites([...this.props.favorites, cleanedMovie]) : null)
-      .catch(error => console.log(error)) 
+    this.handleFavorites(url, userOptionObject)
   }
 
+  deleteFavorite = (movie) => {
+    const movieId = movie.movie_id ? movie.movie_id : movie.id
+    const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites/${movieId}`
+    const userOptionObject = {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    }
+    this.handleFavorites(url, userOptionObject)
+  }
+
+  handleFavorites = (url, options) => {
+    fetchUserData(url, options)
+      .then(result => {
+        if(result.status === 'success') {
+        const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`
+        fetchUserData(url)
+          .then(response => this.props.setFavorites(response.data))
+          .catch(error => error)
+        }
+      })
+      .catch(error => console.log(error))
+  }
 
   displayCards = () => {
     if(!this.state.favorites) {
-      return this.props.movies.map(movie => <MovieCard {...movie} favoriteMovie = {this.favoriteMovie} key={movie.id}/>)
+      return this.props.movies.map(movie => <MovieCard {...movie} deleteFavorite={this.deleteFavorite} favorites={this.props.favorites} favoriteMovie={this.favoriteMovie} key={movie.id}/>)
     } else {
-      return this.props.favorites.map(movie => <MovieCard {...movie} key={movie.id}/>)
+      return this.props.favorites.map(movie => <MovieCard {...movie} deleteFavorite={this.deleteFavorite} key={movie.movie_id}/>)
     }
   }
 
