@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './AddUser.scss'
-
 import { addUserData } from '../../APICalls/APICalls';
 
 
