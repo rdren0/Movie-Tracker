@@ -8,6 +8,8 @@ img {
   background: $primary-color;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  position: fixed;
 }
 
 .logo {

@@ -3,18 +3,19 @@ import Filter from '../../Components/Filter/Filter';
 import MovieCard from '../../Components/MovieCard/MovieCard'
 import { connect } from 'react-redux';
 import './CardContainer.scss'
-import ShowMore from 'react-show-more';
 import { favoriteMovieData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
 import { nextPage } from '../../Actions'
-
+import NoFavorites from '../NoFavorites/NoFavorites'
+ 
 
 class CardContainer extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      favorites: false
+      favorites: false,
+      showPopup: false
     }
   }
 
@@ -39,13 +40,19 @@ class CardContainer extends Component {
 
 
   displayCards = () => {
-    return this.props.movies.map(movie => 
-      <MovieCard {...movie} favoriteMovie = {this.favoriteMovie} key={movie.id}/>
-    )
+    if(!this.state.favorites) {
+      return this.props.movies.map(movie => <MovieCard {...movie} favoriteMovie = {this.favoriteMovie} key={movie.id}/>)
+    } else {
+      return this.props.favorites.map(movie => <MovieCard {...movie} key={movie.id}/>)
+    }
   }
 
-  displayFavorites = () => {
-    return this.props.favorites.map(movie => <MovieCard {...movie} key={movie.id}/>)
+  toggleSource = () => {
+    if(this.props.favorites.length) {
+      this.setState({favorites: !this.state.favorites})
+    } else {
+      this.setState({showPopup: true})
+    }
   }
 
   newPage = () =>{
@@ -57,19 +64,19 @@ class CardContainer extends Component {
   }
 
   render() {
-    let whatToRender = this.displayCards();
-    if(this.state.favorites) {
-      whatToRender = this.displayFavorites();
+    let popup;
+    if(this.state.showPopup) {
+      popup = <NoFavorites />
     }
     return (
       <div>
-        <Filter/>
+        {popup}
+        <Filter toggleSource={this.toggleSource}/>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
         <div className='card-container'>
-          {whatToRender}
+          {this.displayCards()}
         </div>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
-        <button onClick={() => this.setState({favorites: true})}>favs</button>
       </div>
     );
   }

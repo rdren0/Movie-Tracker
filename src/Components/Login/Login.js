@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { fetchUserData, fetchFavorites } from '../../APICalls/APICalls';
-import { userLogin, addUser, setFavorites } from '../../Actions';
+import { userLogin, setFavorites } from '../../Actions';
 import './Login.scss';
 import { connect } from 'react-redux'; 
 

@@ -1,0 +1,34 @@
+@import '../../Utilities/_Variables.scss';
+
+.overlay {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, .5);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+}
+
+.popup {
+  margin-top: 150px; 
+  width: 30%;
+  height: 30%;
+  background: $main-background;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-btn {
+  background: $primary-color;
+  text-decoration: none;
+  color: $main-text;
+  padding: 15px 30px;
+  border-radius: 3px;
+}
+
+.button-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+}
