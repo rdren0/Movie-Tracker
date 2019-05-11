@@ -37,6 +37,7 @@ class AddUser extends Component {
   }
 
   render() {
+    if(this.state.status === 'success' )
     return (
       <div>
         <form onSubmit={this.handleAddUser} className='signup-form'>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { fetchUserData } from '../../APICalls/APICalls';
-import { userLogin, setFavorites } from '../../Actions';
+import { userLogin, setFavorites, isLoggedIn } from '../../Actions';
 import './Login.scss';
 import { connect } from 'react-redux'; 
 
@@ -33,16 +33,17 @@ class Login extends Component {
       }
     }
     fetchUserData(url, userOptionObject)
-    .then(results => this.props.addCurrentUser(results.data) )
-    .then(results => this.setState({ status: results.status }, () => this.getFavoriteMovies()))
+    .then(results => this.props.addCurrentUser(results.data))
+    .then(results => this.getFavoriteMovies(results.user.id))
     .catch(error => console.log(error))
 
   }
 
-  getFavoriteMovies = () => {
-    const url = `http://localhost:3000/api/users/${this.props.user.id}/favorites`
+  getFavoriteMovies = (id) => {
+    const url = `http://localhost:3000/api/users/${id}/favorites`
     fetchUserData(url)
     .then(response => this.props.setFavorites(response.data))
+    .then(response => this.props.isLoggedIn(true))
     .catch(error => error)
   }
 
@@ -65,7 +66,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addCurrentUser: (user) => dispatch(userLogin(user)),
-  setFavorites: (favorites) => dispatch(setFavorites(favorites))
+  setFavorites: (favorites) => dispatch(setFavorites(favorites)),
+  isLoggedIn: (bool) => dispatch(isLoggedIn(bool))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

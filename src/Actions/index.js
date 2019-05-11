@@ -29,3 +29,8 @@ export const setFavorites = (favorites) => ({
   favorited: false,
   favorites
 })
+
+export const isLoggedIn = (bool) => ({
+  type: 'IS_LOGGED_IN',
+  isLoggedIn: bool
+})
