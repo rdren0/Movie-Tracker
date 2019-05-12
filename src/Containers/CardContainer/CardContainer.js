@@ -82,8 +82,10 @@ class CardContainer extends Component {
 
   changeCat = (e) =>{
     let category = e.target.value;
-    this.props.changeCategory(category)
-    // this.props.fetchCallFun(this.props.category)
+    this.props.changeCategory(category);
+    setTimeout(() =>this.props.fetchCallFun(), 500);
+
+
 
   }
 

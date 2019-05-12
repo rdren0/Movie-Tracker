@@ -6,9 +6,7 @@ class Filter extends Component {
     return (
       <div className="search-bar">
         <select onChange={this.props.changeCat}>
-          <option value="popular" default>Popular</option>
-          <option value="favorites">My Favorites</option>
-          <option value="action">Action</option>
+          <option value="action" default>Action</option>
           <option value="adventure">Adventure</option>
           <option value="comedy">Comedy</option>
           <option value="horror">Horror</option>
