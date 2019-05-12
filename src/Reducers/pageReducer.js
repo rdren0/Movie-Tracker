@@ -3,7 +3,7 @@ export const pageReducer = (state = 1 , action) => {
     case 'NEXT_PAGE':
       return action.value+1;
     case 'PREVIOUS_PAGE':
-      if(this.state > 1){
+      if(state > 1){
         return action.value-1;
       }else{
         return action.value;
