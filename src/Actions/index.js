@@ -34,3 +34,8 @@ export const isLoggedIn = (bool) => ({
   type: 'IS_LOGGED_IN',
   isLoggedIn: bool
 })
+
+export const changeCategory = (category) =>({
+  type: 'CHANGE_CATEGORY',
+  category
+})

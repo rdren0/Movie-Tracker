@@ -41,7 +41,9 @@ const mapStateToProps = (state) =>({
   movies: state.movies,
   page: state.page,
   user: state.currentUser,
-  isLoggedIn: state.isLoggedIn
+  isLoggedIn: state.isLoggedIn,
+  category: state.category
+
 })
 
 const mapDispatchToProps = (dispatch) =>({

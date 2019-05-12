@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './CardContainer.scss'
 import { fetchUserData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
-import { nextPage, setFavorites } from '../../Actions'
+import { nextPage, setFavorites, changeCategory } from '../../Actions'
 import NoFavorites from '../NoFavorites/NoFavorites'
  
 
@@ -80,6 +80,13 @@ class CardContainer extends Component {
 
   }
 
+  changeCat = (e) =>{
+    let category = e.target.value;
+    this.props.changeCategory(category)
+    // this.props.fetchCallFun(this.props.category)
+
+  }
+
   render() {
     let popup;
     if(this.state.showPopup) {
@@ -88,7 +95,7 @@ class CardContainer extends Component {
     return (
       <div>
         {popup}
-        <Filter toggleSource={this.toggleSource}/>
+        <Filter toggleSource={this.toggleSource} changeCat={this.changeCat}/>
         <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
         <div className='card-container'>
           {this.displayCards()}
@@ -103,12 +110,15 @@ const mapStateToProps = (state) =>({
   user: state.currentUser,
   movies: state.movies,
   page: state.page,
-  favorites: state.favorites
+  favorites: state.favorites,
+  category: state.category
+
 })
 const mapDispatchToProps = (dispatch) =>({
   nextPage: (value) => dispatch(nextPage(value)),
-  setFavorites: (favorites) => dispatch(setFavorites(favorites)),
   // previousPage: (value) => dispatch(previousPage(value))
+  setFavorites: (favorites) => dispatch(setFavorites(favorites)),
+  changeCategory: (category) => dispatch(changeCategory(category))
 })
 
 
