@@ -5,7 +5,6 @@ import { pageReducer } from './pageReducer'
 import { favoritesReducer } from './favoritesReducer'
 import { loggedInReducer } from './loggedInReducer'
 import { categoryReducer } from './categoryReducer'
-import { searchReducer } from './searchReducer'
 
 
  
