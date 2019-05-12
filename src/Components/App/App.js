@@ -18,7 +18,8 @@ class App extends Component {
   }
 
   fetchCallFun = (page=1) =>{
-     fetchCall(`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&page=${page}&api_key=${apiKey}`)
+    console.log('fetchCall running')
+     fetchCall(`https://api.themoviedb.org/3/discover/movie?with_genres=${this.props.category}&sort_by=popularity.desc&page=${page}&api_key=${apiKey}`)
     .then(result => this.props.addMovies(result.results))
     .catch(error => console.log(error))
   }
@@ -41,7 +42,9 @@ const mapStateToProps = (state) =>({
   movies: state.movies,
   page: state.page,
   user: state.currentUser,
-  isLoggedIn: state.isLoggedIn
+  isLoggedIn: state.isLoggedIn,
+  category: state.category
+
 })
 
 const mapDispatchToProps = (dispatch) =>({

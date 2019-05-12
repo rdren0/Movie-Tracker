@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import './CardContainer.scss'
 import { fetchUserData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
-import { nextPage, setFavorites } from '../../Actions'
+import { previousPage, nextPage, setFavorites, changeCategory } from '../../Actions'
 import NoFavorites from '../NoFavorites/NoFavorites'
  
 
@@ -72,11 +72,24 @@ class CardContainer extends Component {
     }
   }
 
-  newPage = () =>{
+  newPage = (e) =>{
+    let button = e.target.value
     let value = this.props.page;
-    this.props.nextPage(this.props.page)
-    this.props.fetchCallFun(value+=1)
+    if(button === 'next'){
+      this.props.nextPage(this.props.page)
+    }else if(button === 'previous'){
+      this.props.previousPage(this.props.page)
+    }
+    setTimeout(() => this.props.fetchCallFun(this.props.page), 100)
     window.scrollTo(0, 0);
+
+  }
+
+  changeCat = (e) =>{
+    let category = e.target.value;
+    this.props.changeCategory(category);
+    setTimeout(() =>this.props.fetchCallFun(), 100);
+
 
   }
 
@@ -88,12 +101,15 @@ class CardContainer extends Component {
     return (
       <div>
         {popup}
-        <Filter toggleSource={this.toggleSource}/>
-        <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
+        <Filter toggleSource={this.toggleSource} changeCat={this.changeCat}/>
+        <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
+        <button className="page next" onClick={this.newPage} value="next"> Next Page </button>
+
         <div className='card-container'>
           {this.displayCards()}
         </div>
-        <button className="next-page" onClick={() => this.newPage()}> Next Page </button>
+        <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
+        <button className="page next" onClick={this.newPage} value="next"> Next Page </button>
       </div>
     );
   }
@@ -103,12 +119,15 @@ const mapStateToProps = (state) =>({
   user: state.currentUser,
   movies: state.movies,
   page: state.page,
-  favorites: state.favorites
+  favorites: state.favorites,
+  category: state.category
+
 })
 const mapDispatchToProps = (dispatch) =>({
   nextPage: (value) => dispatch(nextPage(value)),
+  previousPage: (value) => dispatch(previousPage(value)),
   setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  // previousPage: (value) => dispatch(previousPage(value))
+  changeCategory: (category) => dispatch(changeCategory(category))
 })
 
 
