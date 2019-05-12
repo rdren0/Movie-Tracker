@@ -67,3 +67,22 @@
   width: 500px;
   height: 35px;
 }
+
+.page{
+  width: 150px;
+  background: #d38787;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #595959;
+  border-right: 0;
+  text-decoration: none;
+  color: #595959;
+  font-size: 22px;
+  display: inline;
+  margin: 5px;
+}
+
+.next{
+  float:right;
+}

@@ -102,13 +102,14 @@ class CardContainer extends Component {
       <div>
         {popup}
         <Filter toggleSource={this.toggleSource} changeCat={this.changeCat}/>
-        <button className="page" onClick={this.newPage} value="previous"> Previous Page </button>
-        <button className="page" onClick={this.newPage} value="next"> Next Page </button>
+        <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
+        <button className="page next" onClick={this.newPage} value="next"> Next Page </button>
 
         <div className='card-container'>
           {this.displayCards()}
         </div>
-        <button className="page" onClick={this.newPage} value="next"> Next Page </button>
+        <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
+        <button className="page next" onClick={this.newPage} value="next"> Next Page </button>
       </div>
     );
   }
