@@ -14,15 +14,16 @@ class App extends Component {
 
   componentDidMount = () => {
     this.fetchCallFun()
-
   }
+
 
   fetchCallFun = (page=1) =>{
     console.log('fetchCall running')
-     fetchCall(`https://api.themoviedb.org/3/discover/movie?with_genres=${this.props.category}&sort_by=popularity.desc&page=${page}&api_key=${apiKey}`)
+    fetchCall(`https://api.themoviedb.org/3/discover/movie?with_genres=${this.props.category}&sort_by=popularity.desc&page=${page}&api_key=${apiKey}`)
     .then(result => this.props.addMovies(result.results))
     .catch(error => console.log(error))
   }
+
 
   render() {
     return (
@@ -43,7 +44,7 @@ const mapStateToProps = (state) =>({
   page: state.page,
   user: state.currentUser,
   isLoggedIn: state.isLoggedIn,
-  category: state.category
+  category: state.category,
 
 })
 
