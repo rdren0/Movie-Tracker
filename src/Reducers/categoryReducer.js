@@ -74,7 +74,7 @@ export const genres = [
     },
     {
       "id": 878,
-      "name": "science Fiction"
+      "name": "science fiction"
     },
     {
       "id": 10770,

@@ -86,3 +86,16 @@
 .next{
   float:right;
 }
+
+.drop-down{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #595959;
+  border-right: 0;
+  text-decoration: none;
+  color: #595959;
+  font-size: 22px;
+  margin: auto;
+  margin-top: 5px;
+}
