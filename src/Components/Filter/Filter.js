@@ -1,10 +1,35 @@
 import React, {Component} from 'react';
 
 class Filter extends Component {
+constructor(){
+  super()
+  this.state={
+    searchWord: ''
+  }
+}
+
+  handleChange = (e) => {
+    let search = e.target.value;
+    this.setState({searchWord: search})
+  }
+
+  handleSubmit = (e) =>{
+    e.preventDefault();
+    this.props.searchMovies(this.state)
+  }
 
   render() {
     return (
       <div>
+      <form onSubmit={this.handleSubmit}>
+        <input 
+          onChange={this.handleChange}
+          value={this.state.searchWord}
+          placeholder="Search all Movies"
+          type="text"
+          name="search"/> 
+        <button>Search</button>
+      </form>
         <select onChange={this.props.changeCat} className="drop-down">
           <option value="action" default>Action</option>
           <option value="adventure">Adventure</option>

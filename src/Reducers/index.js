@@ -5,6 +5,8 @@ import { pageReducer } from './pageReducer'
 import { favoritesReducer } from './favoritesReducer'
 import { loggedInReducer } from './loggedInReducer'
 import { categoryReducer } from './categoryReducer'
+import { searchReducer } from './searchReducer'
+
 
  
 const rootReducer= combineReducers({
@@ -13,7 +15,7 @@ const rootReducer= combineReducers({
   page: pageReducer,
   favorites: favoritesReducer,
   isLoggedIn: loggedInReducer,
-  category: categoryReducer
+  category: categoryReducer,
 })
 
 export default rootReducer;

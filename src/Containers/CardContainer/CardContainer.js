@@ -3,6 +3,9 @@ import Filter from '../../Components/Filter/Filter';
 import MovieCard from '../../Components/MovieCard/MovieCard'
 import { connect } from 'react-redux';
 import './CardContainer.scss'
+import { apiKey } from '../../apiKey.js';
+import { addMovies } from '../../Actions';
+import { fetchCall } from '../../APICalls/APICalls';
 import { fetchUserData } from '../../APICalls/APICalls';
 import { cleanForFavorite } from '../../Utilities/Cleaners.js';
 import { previousPage, nextPage, setFavorites, changeCategory } from '../../Actions'
@@ -89,7 +92,15 @@ class CardContainer extends Component {
     let category = e.target.value;
     this.props.changeCategory(category);
     setTimeout(() =>this.props.fetchCallFun(), 100);
+  }
 
+   searchMovies = (search) => {
+    let searchWord = search.searchWord
+    fetchCall(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=%22${searchWord}%22&page=1&include_adult=false`)
+    .then(result => this.props.addMovies(result.results))
+    .catch(error => console.log(error))
+    this.props.previousPage(2)
+    window.scrollTo(0, 0);
 
   }
 
@@ -101,10 +112,9 @@ class CardContainer extends Component {
     return (
       <div>
         {popup}
-        <Filter toggleSource={this.toggleSource} changeCat={this.changeCat}/>
+        <Filter toggleSource={this.toggleSource} changeCat={this.changeCat} searchMovies={this.searchMovies}/>
         <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
         <button className="page next" onClick={this.newPage} value="next"> Next Page </button>
-
         <div className='card-container'>
           {this.displayCards()}
         </div>
@@ -120,14 +130,16 @@ const mapStateToProps = (state) =>({
   movies: state.movies,
   page: state.page,
   favorites: state.favorites,
-  category: state.category
+  category: state.category,
 
 })
 const mapDispatchToProps = (dispatch) =>({
   nextPage: (value) => dispatch(nextPage(value)),
   previousPage: (value) => dispatch(previousPage(value)),
   setFavorites: (favorites) => dispatch(setFavorites(favorites)),
-  changeCategory: (category) => dispatch(changeCategory(category))
+  changeCategory: (category) => dispatch(changeCategory(category)),
+  addMovies:(movies) => dispatch(addMovies(movies))
+
 })
 
 
