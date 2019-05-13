@@ -61,13 +61,13 @@ class CardContainer extends Component {
 
   displayCards = () => {
     if(!this.state.favorites) {
-      return this.props.movies.map(movie => <MovieCard {...movie} deleteFavorite={this.deleteFavorite} favorites={this.props.favorites} favoriteMovie={this.favoriteMovie} key={movie.id}/>)
+      return this.props.movies.map(movie => <MovieCard {...movie} showPopup={this.showPopup} deleteFavorite={this.deleteFavorite} favorites={this.props.favorites} favoriteMovie={this.favoriteMovie} key={movie.id} />)
     } else {
       return this.props.favorites.map(movie => <MovieCard {...movie} deleteFavorite={this.deleteFavorite} key={movie.movie_id}/>)
     }
   }
 
-  toggleSource = () => {
+  showPopup = () => {
     if(this.props.favorites.length) {
       this.setState({favorites: !this.state.favorites})
     } else {
@@ -79,11 +79,11 @@ class CardContainer extends Component {
     let button = e.target.value
     let value = this.props.page;
     if(button === 'next'){
-      this.props.nextPage(this.props.page)
+      this.props.nextPage(value)
     }else if(button === 'previous'){
-      this.props.previousPage(this.props.page)
+      this.props.previousPage(value)
     }
-    setTimeout(() => this.props.fetchCallFun(this.props.page), 100)
+    setTimeout(() => this.props.fetchCallFun(value), 100)
     window.scrollTo(0, 0);
 
   }
@@ -112,7 +112,7 @@ class CardContainer extends Component {
     return (
       <div>
         {popup}
-        <Filter toggleSource={this.toggleSource} changeCat={this.changeCat} searchMovies={this.searchMovies}/>
+        <Filter toggleSource={this.showPopup} changeCat={this.changeCat} searchMovies={this.searchMovies}/>
         <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
         <button className="page next" onClick={this.newPage} value="next"> Next Page </button>
         <div className='card-container'>
