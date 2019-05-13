@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './AddUser.scss'
 import { fetchUserData } from '../../APICalls/APICalls';
+import { Link } from 'react-router-dom';
 
 
 class AddUser extends Component {
@@ -37,7 +38,11 @@ class AddUser extends Component {
   }
 
   render() {
-    if(this.state.status === 'success' )
+    if(this.state.status === 'success') {
+      return (
+        <Link to='/Login' className='success-message'>Success! Log In to continue!</Link>
+      )
+    } else { 
     return (
       <div>
         <form onSubmit={this.handleAddUser} className='signup-form'>
@@ -47,7 +52,7 @@ class AddUser extends Component {
             <button> Create Account </button>
         </form>
       </div>
-    );
+    )};
   }
 }
 
