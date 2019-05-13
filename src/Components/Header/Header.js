@@ -43,7 +43,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  isLoggedIn: (bool) => dispatch(isLoggedIn(bool)),
   addCurrentUser: (user) => dispatch(userLogin(user))
 })
 
