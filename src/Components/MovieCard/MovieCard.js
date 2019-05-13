@@ -1,16 +1,20 @@
 import React from 'react';
 import ShowMore from 'react-show-more';
 import { checkIfFavorited } from '../../Utilities/Cleaners'
+import { connect } from 'react-redux';
 
 
  const MovieCard = (movie) => {
+  console.log(movie)
   let isFavorited = movie.favorited;
   isFavorited = checkIfFavorited(movie, movie.favorites)
   movie = ({...movie, favorited: isFavorited})
 
-  const {vote_average, title, release_date, poster_path, overview, favoriteMovie, favorited, deleteFavorite } = movie;
+  const {vote_average, title, release_date, poster_path, overview, favoriteMovie, favorited, deleteFavorite, showPopup, isLoggedIn } = movie;
   let whichFavoriteButton;
-  if(!favorited) {
+  if(isLoggedIn === false) {
+    whichFavoriteButton = <button onClick={() => showPopup()}>Favorite</button>
+  } else if(!favorited) {
     whichFavoriteButton = <button onClick={() => favoriteMovie(movie)}>Favorite</button>
   } else {
     whichFavoriteButton = <button onClick={() => deleteFavorite(movie)}>Delete Favorite</button>
@@ -31,5 +35,9 @@ import { checkIfFavorited } from '../../Utilities/Cleaners'
     );
 }
 
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.isLoggedIn
+})
 
-export default MovieCard;
+
+export default connect(mapStateToProps)(MovieCard);

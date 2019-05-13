@@ -8,11 +8,11 @@ class NoFavorites extends Component {
   render() {
     console.log(this.props.currentUser)
     let whatToRender;
-    if(!this.props.currentUser.name) {
+    if(!this.props.isLoggedIn) {
       whatToRender = 
         <article>
           <h1>You're not logged in!</h1>
-          <p>Click below to sign in! Don't have an account yet? Create one below!</p>
+          <p>Click below to sign in! Don't have an account yet? Create one!</p>
           <div className='button-container'>
             <NavLink to='/LogIn' className='popup-btn'>Log In</NavLink>
             <NavLink to='/SignUp' className='popup-btn'>Sign Up</NavLink>
@@ -36,7 +36,8 @@ class NoFavorites extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  isLoggedIn: state.isLoggedIn
 })
 
 export default connect(mapStateToProps)(NoFavorites);
