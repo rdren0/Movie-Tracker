@@ -14,11 +14,11 @@ import { Link } from 'react-router-dom';
   const {vote_average, title, release_date, poster_path, overview, favoriteMovie, favorited, deleteFavorite, showPopup, isLoggedIn, id } = movie;
   let whichFavoriteButton;
   if(isLoggedIn === false) {
-    whichFavoriteButton = <button onClick={() => showPopup()}>Favorite</button>
+    whichFavoriteButton = <button className="movie-buttons" onClick={() => showPopup()}>Favorite</button>
   } else if(!favorited) {
-    whichFavoriteButton = <button onClick={() => favoriteMovie(movie)}>Favorite</button>
+    whichFavoriteButton = <button className="movie-buttons" onClick={() => favoriteMovie(movie)}>Favorite</button>
   } else {
-    whichFavoriteButton = <button onClick={() => deleteFavorite(movie)}>Delete Favorite</button>
+    whichFavoriteButton = <button className="movie-buttons" onClick={() => deleteFavorite(movie)}>Delete Favorite</button>
   }
   return (
       <div className='movie-card'>
@@ -29,10 +29,10 @@ import { Link } from 'react-router-dom';
         </div>
         <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt='img poster' className='movie-poster'/>
         <div className='movie-overview'>
-        <Link to={`movies/${id}`}>
-          <button> See more </button>
-        </Link>
           {whichFavoriteButton}
+        <Link to={`movies/${id}`}>
+          <button className="movie-buttons" > See more </button>
+        </Link>
         </div>
       </div>
     );
