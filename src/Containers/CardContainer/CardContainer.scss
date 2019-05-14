@@ -5,43 +5,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-bottom: 50px;
-}
-
-.movie-card {
-  height: 450px;
-  max-width: 30%;
-  min-width: 30%;
-  margin: 10px;
-  flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1fr 2fr;
-  grid-template-areas: 
-    'poster title'
-    'poster overview';
-  border: 1px solid $primary-color;
-}
-
-.movie-card:hover{
-  box-shadow: 3px 10px 15px 2px rgba(204,204,204,1);
-
-}
-
-.movie-title {
-  grid-area: title;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.movie-poster {
-  padding: 10px;
-  grid-area: poster;
-  height: 430px;
-  width: 290px;
-}
-
-.movie-overview {
-  grid-area: overview;
-  margin: 0 10px;
+  overflow-y: auto;
+  height: 85vh;
 }

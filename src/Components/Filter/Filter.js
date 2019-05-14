@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Filter.scss'
 
 class Filter extends Component {
 constructor(){
@@ -20,8 +21,8 @@ constructor(){
 
   render() {
     return (
-      <div>
-      <form onSubmit={this.handleSubmit}>
+      <div className='filter-bar'>
+      <form onSubmit={this.handleSubmit} className='search'>
         <input 
           className="search-input"
           onChange={this.handleChange}
@@ -51,7 +52,6 @@ constructor(){
           <option value="war">War</option>
           <option value="western">Western</option>
         </select>
-        <button onClick={() => this.props.toggleSource()}>My Favorites</button>
       </div>
     );
   }

@@ -33,7 +33,13 @@ class AddUser extends Component {
       headers: {'Content-Type': 'application/json'}
     }
     fetchUserData(url, userOptionObject)
-    .then(results => this.setState({ status: 'success'}))
+    .then(results => {
+      if(results) {
+        this.setState({ status: 'success'})
+      } else {
+        alert('Email already exsists, please log in or enter a new email address.')
+      }}
+    )
     .catch(error => console.log(error))
   }
 
@@ -44,7 +50,7 @@ class AddUser extends Component {
       )
     } else { 
     return (
-      <div>
+      <div className='btn-container'>
         <form onSubmit={this.handleAddUser} className='signup-form'>
             <input className='name-input' onChange={this.handleChange} name="name" placeholder="Name" value ={this.state.name}/>
             <input className='email-input' onChange={this.handleChange} name="email" placeholder="Email" value ={this.state.email}/>

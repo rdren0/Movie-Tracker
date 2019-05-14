@@ -1,0 +1,37 @@
+@import '../../Utilities/_Variables.scss';
+
+.drop-down{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #595959;
+  font-size: 22px;
+  background-color: #d38787;
+  margin: 0;
+}
+
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.search-input{
+  width: 400px;
+  height: 30px;
+}
+
+.search-button{
+  height: 35px;
+  width: 70px;
+  background-color: #d38787;
+}
+
+
+.filter-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px auto;
+}
