@@ -40,15 +40,5 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.isLoggedIn
 })
 
-// const ImageCard = ({ name, bio, image, id, type }) => {
-
-//   return (
-//       <Link to={`movies/${id}`}>
-//         <img src={image} className='app-img' />
-//       </Link>
-//   )
-// }
-// <img src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`} alt='img poster' className='movie-poster'/>
-
 
 export default connect(mapStateToProps)(MovieCard);

@@ -1,6 +1,6 @@
  import React, {Component} from 'react';
 import Filter from '../../Components/Filter/Filter';
-import MovieCard from '../../Components/MovieCard/MovieCard'
+import MovieCard from '../MovieCard/MovieCard.js'
 import { connect } from 'react-redux';
 import './CardContainer.scss'
 import { apiKey } from '../../apiKey.js';

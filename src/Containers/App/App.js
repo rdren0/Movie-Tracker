@@ -3,7 +3,7 @@ import React,{ Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { apiKey } from '../../apiKey.js';
 import Header from '../Header/Header';
-import Login from '../Login/Login';
+import Login from '../../Components/Login/Login';
 import MovieDetails from '../../Containers/MovieDetails/MovieDetails';
 import CardContainer from '../../Containers/CardContainer/CardContainer.js';
 import AddUser from '../../Containers/AddUser/AddUser';

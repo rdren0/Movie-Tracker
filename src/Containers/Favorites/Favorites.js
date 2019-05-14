@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Favorites.scss'
-import MovieCard from '../../Components/MovieCard/MovieCard.js'
+import { NavLink } from 'react-router-dom'
+import MovieCard from '../MovieCard/MovieCard.js'
 import { connect } from 'react-redux';
 import { fetchUserData } from '../../APICalls/APICalls';
 import { setFavorites } from '../../Actions'
@@ -43,9 +44,16 @@ class Favorites extends Component {
 
 
   render() {
+    let whatToRender
+    if(!this.props.favorites.length) {
+      whatToRender = <div><p>You don't have any favorites! Favorite some movies and they will display below!</p></div>
+
+    }
     return (
-      <div>
+      <div className='fav-page'>
         <h1>Your Favorite Movies</h1>
+        {whatToRender}
+        <NavLink to='/' className='return-browse'>Back To All Movies</NavLink>
         <div className='fav-scroll'>
           {this.displayCards()}
         </div>

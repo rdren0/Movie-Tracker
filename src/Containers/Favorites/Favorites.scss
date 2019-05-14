@@ -1,3 +1,4 @@
+@import '../../Utilities/_Variables.scss';
 
 
 .fav-scroll{
@@ -5,4 +6,25 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   overflow-y: scroll;
+  margin-top: 10px;
+}
+
+.fav-page {
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    color: $main-text;
+  }
+}
+
+.return-browse {
+  background: $primary-color;
+  text-decoration: none;
+  color: $main-text;
+  padding: 15px 20px;
+  border-radius: 3px;
 }
