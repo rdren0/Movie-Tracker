@@ -22,7 +22,6 @@ constructor(){
     return (
       <div>
       <form onSubmit={this.handleSubmit}>
-      <button className="search-button" browseAll={this.props.browseAll}>Clear Search</button>
         <input 
           className="search-input"
           onChange={this.handleChange}
@@ -31,7 +30,7 @@ constructor(){
           type="text"
           name="search"/> 
         <button className="search-button">Search</button>
-        <br/>
+      <button className="clear-button" browseAll={this.props.browseAll}>Clear Search</button>
       </form>
         <select onChange={this.props.changeCat} className="drop-down">
           <option value="action" default>Action</option>
