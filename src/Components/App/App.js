@@ -8,7 +8,7 @@ import MovieDetails from '../../Containers/MovieDetails/MovieDetails';
 import CardContainer from '../../Containers/CardContainer/CardContainer.js';
 import AddUser from '../../Containers/AddUser/AddUser';
 import { fetchCall } from '../../APICalls/APICalls';
-import { addMovies } from '../../Actions';
+import { addMovies, changeCategory } from '../../Actions';
 import { connect } from 'react-redux';
 import Favorites from '../../Containers/Favorites/Favorites.js'
 
@@ -26,19 +26,26 @@ class App extends Component {
     .catch(error => console.log(error))
   }
 
+  browseAll = () => {
+    console.log('browseAll');
+    setTimeout(() =>this.fetchCallFun(), 1000);
+  }
+
 
   render() {
     return (
       <div className='app-container'>
-        <Header/>
-        <section className='user-actions'>
+        <Header browseAll={this.browseAll}/>
+        <section className='btn-container user-actions'>
+
           <Route exact path="/Login" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<Login/>))}/>
           <Route exact path="/SignUp" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<AddUser/>))}/>
           <Route path='/movies/:id' render={({ match }) => {const { id } = match.params;
             const movie = this.props.movies.find(movie => movie.id === parseInt(id))
             if(movie){return <MovieDetails {...movie} />}}}/>
         </section>
-        <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun}/>}/>
+        <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun} browseAll={this.browseAll}/>}/>
+
         <Route exact path="/Favorites" component={Favorites} />
       </div>
     );
@@ -55,7 +62,9 @@ const mapStateToProps = (state) =>({
 })
 
 const mapDispatchToProps = (dispatch) =>({
-  addMovies:(movies) => dispatch(addMovies(movies))
+  addMovies:(movies) => dispatch(addMovies(movies)),
+  changeCategory: (category) => dispatch(changeCategory(category)),
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

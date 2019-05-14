@@ -108,7 +108,7 @@ class CardContainer extends Component {
     return (
       <div className='scroll'>
         {popup}
-        <Filter toggleSource={this.showPopup} changeCat={this.changeCat} searchMovies={this.searchMovies}/>
+        <Filter toggleSource={this.showPopup} changeCat={this.changeCat} searchMovies={this.searchMovies} browseAll={this.props.browseAll}/>
         <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
         <button className="page next" onClick={this.newPage} value="next"> Next Page </button>
         <div className='card-container'>
