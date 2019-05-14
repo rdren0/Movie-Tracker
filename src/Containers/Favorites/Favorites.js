@@ -55,7 +55,8 @@ class Favorites extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  favorites: state.favorites
+  favorites: state.favorites,
+  user: state.currentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -35,7 +35,7 @@ class Login extends Component {
     fetchUserData(url, userOptionObject)
     .then(results => this.props.addCurrentUser(results.data))
     .then(results => this.getFavoriteMovies(results.user.id))
-    .catch(error => this.setState = {status: error})
+    .catch(error => alert('Email or Password is incorrect'))
 
   }
 

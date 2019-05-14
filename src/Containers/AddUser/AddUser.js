@@ -33,7 +33,13 @@ class AddUser extends Component {
       headers: {'Content-Type': 'application/json'}
     }
     fetchUserData(url, userOptionObject)
-    .then(results => this.setState({ status: 'success'}))
+    .then(results => {
+      if(results) {
+        this.setState({ status: 'success'})
+      } else {
+        alert('Email already exsists, please log in or enter a new email address.')
+      }}
+    )
     .catch(error => console.log(error))
   }
 
