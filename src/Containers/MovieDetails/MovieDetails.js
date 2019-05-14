@@ -4,6 +4,7 @@ import Back from '../../Images/back.svg';
 import './MovieDetails.scss'
 
 
+
 const MovieDetails = ({
   vote_average,
   title,
