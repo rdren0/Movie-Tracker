@@ -26,7 +26,7 @@ npm run test will allow you to see the test results
 
 #### Main Browse Page
 
-![MainBrowsePage](https://github.com/rdren0/Movie-Tracker/blob/production/src/Images/ss2.png)
+![MainBrowsePage](https://github.com/rdren0/Movie-Tracker/blob/production/src/Images/ss1.png)
 
 #### Log In Page
 
