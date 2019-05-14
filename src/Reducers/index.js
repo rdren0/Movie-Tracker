@@ -6,7 +6,6 @@ import { favoritesReducer } from './favoritesReducer'
 import { loggedInReducer } from './loggedInReducer'
 import { categoryReducer } from './categoryReducer'
 
-
  
 const rootReducer= combineReducers({
   movies: moviesReducer,

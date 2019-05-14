@@ -80,10 +80,12 @@ class CardContainer extends Component {
     let value = this.props.page;
     if(button === 'next'){
       this.props.nextPage(value)
+    setTimeout(() => this.props.fetchCallFun(value+1), 200)
     }else if(button === 'previous'){
       this.props.previousPage(value)
+    setTimeout(() => this.props.fetchCallFun(value-1), 200)
+
     }
-    setTimeout(() => this.props.fetchCallFun(value), 100)
     window.scrollTo(0, 0);
 
   }
@@ -91,7 +93,7 @@ class CardContainer extends Component {
   changeCat = (e) =>{
     let category = e.target.value;
     this.props.changeCategory(category);
-    setTimeout(() =>this.props.fetchCallFun(), 100);
+    setTimeout(() =>this.props.fetchCallFun(), 200);
   }
 
    searchMovies = (search) => {

@@ -23,12 +23,13 @@ constructor(){
       <div>
       <form onSubmit={this.handleSubmit}>
         <input 
+          className="search-input"
           onChange={this.handleChange}
           value={this.state.searchWord}
           placeholder="Search all Movies"
           type="text"
           name="search"/> 
-        <button>Search</button>
+        <button className="search-button">Search</button>
       </form>
         <select onChange={this.props.changeCat} className="drop-down">
           <option value="action" default>Action</option>
