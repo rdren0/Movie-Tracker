@@ -9,6 +9,10 @@
   pointer-events: none;
 }
 
+.app-container {
+  overflow: hidden;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -101,29 +105,6 @@
   background-color: #d38787;
 }
 
-.movie-details{
-  display: grid;
-  grid-template-columns: 1200px 1fr;
-  background-color: gainsboro;
-  width: 100%;
-  height: 100%;
-
-}
-
-.movie-grid{
-  display: inline;
-  background-color: white;
-  width: 1050px;
-  display: grid;
-  grid-template-columns: 1fr 400px 60px;
-  margin: 50px;
-  text-align: justify-all;
-}
-
-.back-button{
-  margin-top: 200px;
-}
-
 .movie-buttons{
   margin: 20px;
   height: 40px
@@ -142,13 +123,5 @@
   background-color: #d38787;
 }
 
-.alt-poster{
-  margin:20px;
-  margin-top: 40px;
-  width: 90%;
-  height: 65%
-}
 
-.detail-text{
-  margin-top: 30px;
-}
+

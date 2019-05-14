@@ -112,7 +112,7 @@ class CardContainer extends Component {
       popup = <NoFavorites showPopup={this.showPopup}/>
     }
     return (
-      <div>
+      <div className='scroll'>
         {popup}
         <Filter toggleSource={this.showPopup} changeCat={this.changeCat} searchMovies={this.searchMovies}/>
         <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>
