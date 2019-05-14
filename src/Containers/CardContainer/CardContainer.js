@@ -67,11 +67,11 @@ class CardContainer extends Component {
     }
   }
 
-  showPopup = () => {
-    if(this.props.favorites.length) {
+  showPopup = (popup) => {
+    if(popup || this.props.favorites.length) {
       this.setState({favorites: !this.state.favorites})
     } else {
-      this.setState({showPopup: true})
+      this.setState({showPopup: !this.state.showPopup})
     }
   }
 
@@ -107,7 +107,7 @@ class CardContainer extends Component {
   render() {
     let popup;
     if(this.state.showPopup) {
-      popup = <NoFavorites />
+      popup = <NoFavorites showPopup={this.showPopup}/>
     }
     return (
       <div>

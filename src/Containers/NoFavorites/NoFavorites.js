@@ -28,7 +28,7 @@ class NoFavorites extends Component {
       <div className='overlay'>
         <section className='popup'>
           {whatToRender}
-          <button>x</button>
+          <button onClick={() => this.props.showPopup(false)}>x</button>
         </section>
       </div>
     )
