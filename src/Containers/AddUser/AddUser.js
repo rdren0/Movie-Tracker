@@ -44,7 +44,7 @@ class AddUser extends Component {
       )
     } else { 
     return (
-      <div>
+      <div className='btn-container'>
         <form onSubmit={this.handleAddUser} className='signup-form'>
             <input className='name-input' onChange={this.handleChange} name="name" placeholder="Name" value ={this.state.name}/>
             <input className='email-input' onChange={this.handleChange} name="email" placeholder="Email" value ={this.state.email}/>

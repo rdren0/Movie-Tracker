@@ -10,6 +10,7 @@ import AddUser from '../../Containers/AddUser/AddUser';
 import { fetchCall } from '../../APICalls/APICalls';
 import { addMovies } from '../../Actions';
 import { connect } from 'react-redux';
+import Favorites from '../../Containers/Favorites/Favorites.js'
 
 class App extends Component {
 
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <div className='app-container'>
         <Header/>
-        <section className='btn-container'>
+        <section className='user-actions'>
           <Route exact path="/Login" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<Login/>))}/>
           <Route exact path="/SignUp" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<AddUser/>))}/>
           <Route path='/movies/:id' render={({ match }) => {const { id } = match.params;
@@ -38,6 +39,7 @@ class App extends Component {
             if(movie){return <MovieDetails {...movie} />}}}/>
         </section>
         <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun}/>}/>
+        <Route exact path="/Favorites" component={Favorites} />
       </div>
     );
   }
