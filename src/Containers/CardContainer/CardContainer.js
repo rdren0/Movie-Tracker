@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+ import React, {Component} from 'react';
 import Filter from '../../Components/Filter/Filter';
 import MovieCard from '../../Components/MovieCard/MovieCard'
 import { connect } from 'react-redux';
