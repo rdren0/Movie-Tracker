@@ -19,6 +19,11 @@ constructor(){
     this.props.searchMovies(this.state)
   }
 
+  handleClear = () => {
+    this.setState({searchWord: ''})
+    this.props.browseAll()
+  }
+
   render() {
     return (
       <div className='filter-bar'>
@@ -31,6 +36,7 @@ constructor(){
           type="text"
           name="search"/> 
         <button className="search-button">Search</button>
+        <button className="search-button" onClick={this.handleClear}>Clear Search</button>
       </form>
         <select onChange={this.props.changeCat} className="drop-down">
           <option value="action" default>Action</option>

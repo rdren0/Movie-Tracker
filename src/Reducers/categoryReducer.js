@@ -5,7 +5,11 @@ export const categoryReducer = (state = '', action) => {
         acc+= genre.id
         return acc;
       },0) 
-    return value;
+      if(value === 0) {
+        return ""
+      } else {
+      return value;
+    }
     default:
       return state
   }

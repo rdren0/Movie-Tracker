@@ -8,11 +8,17 @@ import MovieDetails from '../../Containers/MovieDetails/MovieDetails';
 import CardContainer from '../../Containers/CardContainer/CardContainer.js';
 import AddUser from '../../Containers/AddUser/AddUser';
 import { fetchCall } from '../../APICalls/APICalls';
-import { addMovies } from '../../Actions';
+import { addMovies, changeCategory } from '../../Actions';
 import { connect } from 'react-redux';
 import Favorites from '../../Containers/Favorites/Favorites.js'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state ={
+      status: ''
+    }
+  }
 
   componentDidMount = () => {
     this.fetchCallFun()
@@ -22,15 +28,20 @@ class App extends Component {
   fetchCallFun = (page=1) =>{
     console.log('fetchCall running')
     fetchCall(`https://api.themoviedb.org/3/discover/movie?with_genres=${this.props.category}&sort_by=popularity.desc&page=${page}&api_key=${apiKey}`)
-    .then(result => this.props.addMovies(result.results))
+    .then(result => this.props.addMovies(result.results), () => this.setState({status: 'success'}))
     .catch(error => console.log(error))
   }
+
+  browseAll = () => {
+    this.props.changeCategory(" ")
+    setTimeout(() => this.fetchCallFun(), 200)
+ }
 
 
   render() {
     return (
       <div className='app-container'>
-        <Header/>
+        <Header browseAll={this.browseAll}/>
         <section className='user-actions'>
           <Route exact path="/Login" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<Login/>))}/>
           <Route exact path="/SignUp" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<AddUser/>))}/>
@@ -38,7 +49,7 @@ class App extends Component {
             const movie = this.props.movies.find(movie => movie.id === parseInt(id))
             if(movie){return <MovieDetails {...movie} />}}}/>
         </section>
-        <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun}/>}/>
+        <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun} browseAll={this.browseAll}/>}/>
         <Route exact path="/Favorites" component={Favorites} />
       </div>
     );
@@ -55,7 +66,8 @@ const mapStateToProps = (state) =>({
 })
 
 const mapDispatchToProps = (dispatch) =>({
-  addMovies:(movies) => dispatch(addMovies(movies))
+  addMovies:(movies) => dispatch(addMovies(movies)),
+  changeCategory: (cat) => dispatch(changeCategory(cat))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
