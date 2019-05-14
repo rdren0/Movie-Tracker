@@ -4,6 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { apiKey } from '../../apiKey.js';
 import Header from '../Header/Header';
 import Login from '../Login/Login';
+import MovieDetails from '../../Containers/MovieDetails/MovieDetails';
 import CardContainer from '../../Containers/CardContainer/CardContainer.js';
 import AddUser from '../../Containers/AddUser/AddUser';
 import { fetchCall } from '../../APICalls/APICalls';
@@ -32,6 +33,9 @@ class App extends Component {
         <section className='btn-container'>
           <Route exact path="/Login" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<Login/>))}/>
           <Route exact path="/SignUp" render={() => (this.props.isLoggedIn ? (<Redirect to="/"/>) : (<AddUser/>))}/>
+          <Route path='/movies/:id' render={({ match }) => {const { id } = match.params;
+            const movie = this.props.movies.find(movie => movie.id === parseInt(id))
+            if(movie){return <MovieDetails {...movie} />}}}/>
         </section>
         <Route exact path="/" render={ () => <CardContainer fetchCallFun={this.fetchCallFun}/>}/>
       </div>
