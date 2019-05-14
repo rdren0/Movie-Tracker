@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
   return (
       <div className='movie-card'>
         <div className='movie-title'>
-          <p>{vote_average}</p>
+          <p>{vote_average}</p> 
           <h4>{title}</h4>
           <p>{release_date}</p>
         </div>

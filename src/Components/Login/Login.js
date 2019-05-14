@@ -35,7 +35,7 @@ class Login extends Component {
     fetchUserData(url, userOptionObject)
     .then(results => this.props.addCurrentUser(results.data))
     .then(results => this.getFavoriteMovies(results.user.id))
-    .catch(error => console.log(error))
+    .catch(error => this.setState = {status: error})
 
   }
 
@@ -44,7 +44,7 @@ class Login extends Component {
     fetchUserData(url)
     .then(response => this.props.setFavorites(response.data))
     .then(response => this.props.isLoggedIn(true))
-    .catch(error => error)
+    .catch(error => console.log(error))
   }
 
   render() {
