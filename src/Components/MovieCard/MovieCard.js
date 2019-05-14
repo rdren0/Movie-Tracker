@@ -2,15 +2,16 @@ import React from 'react';
 import ShowMore from 'react-show-more';
 import { checkIfFavorited } from '../../Utilities/Cleaners'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 
 
  const MovieCard = (movie) => {
-  console.log(movie)
   let isFavorited = movie.favorited;
   isFavorited = checkIfFavorited(movie, movie.favorites)
   movie = ({...movie, favorited: isFavorited})
 
-  const {vote_average, title, release_date, poster_path, overview, favoriteMovie, favorited, deleteFavorite, showPopup, isLoggedIn } = movie;
+  const {vote_average, title, release_date, poster_path, overview, favoriteMovie, favorited, deleteFavorite, showPopup, isLoggedIn, id } = movie;
   let whichFavoriteButton;
   if(isLoggedIn === false) {
     whichFavoriteButton = <button onClick={() => showPopup()}>Favorite</button>
@@ -28,7 +29,9 @@ import { connect } from 'react-redux';
         </div>
         <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt='img poster' className='movie-poster'/>
         <div className='movie-overview'>
-          <ShowMore lines={6}>{overview}</ShowMore>
+        <Link to={`movies/${id}`}>
+          <button> See more </button>
+        </Link>
           {whichFavoriteButton}
         </div>
       </div>
@@ -39,5 +42,13 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.isLoggedIn
 })
 
+// const ImageCard = ({ name, bio, image, id, type }) => {
+
+//   return (
+//       <Link to={`movies/${id}`}>
+//         <img src={image} className='app-img' />
+//       </Link>
+//   )
+// }
 
 export default connect(mapStateToProps)(MovieCard);
