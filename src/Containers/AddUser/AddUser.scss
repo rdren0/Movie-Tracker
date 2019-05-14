@@ -18,6 +18,16 @@
   }
 }
 
+.btn-container {
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../../Images/main-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
 .success-message {
   border: 1px solid $primary-color;
   padding: 15px;
