@@ -8,6 +8,7 @@ const MovieDetails = ({
   title,
   release_date,
   poster_path,
+  backdrop_path,
   overview,
   favoriteMovie,
   favorited,
@@ -22,12 +23,12 @@ const MovieDetails = ({
       <div className="movie-grid">
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
             alt="img poster"
-            className="movie-poster"
+            className="alt-poster"
           />
         </div>
-        <div>
+        <div className="detail-text">
           <h1>{title}</h1>
           <p>{overview}</p>
         </div>
