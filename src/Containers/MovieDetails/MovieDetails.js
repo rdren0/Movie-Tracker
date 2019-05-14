@@ -25,7 +25,7 @@ const MovieDetails = ({
       <div className="movie-grid">
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500/${backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
             alt="img poster"
             className="alt-poster"
           />

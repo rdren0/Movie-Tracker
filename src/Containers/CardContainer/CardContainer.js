@@ -59,13 +59,7 @@ class CardContainer extends Component {
       .catch(error => console.log(error))
   }
 
-  displayCards = () => {
-    if(!this.state.favorites) {
-      return this.props.movies.map(movie => <MovieCard {...movie} showPopup={this.showPopup} deleteFavorite={this.deleteFavorite} favorites={this.props.favorites} favoriteMovie={this.favoriteMovie} key={movie.id} />)
-    } else {
-      return this.props.favorites.map(movie => <MovieCard {...movie} deleteFavorite={this.deleteFavorite} key={movie.movie_id}/>)
-    }
-  }
+  displayCards = () => this.props.movies.map(movie => <MovieCard {...movie} showPopup={this.showPopup} deleteFavorite={this.deleteFavorite} favorites={this.props.favorites} favoriteMovie={this.favoriteMovie} key={movie.id} />)
 
   showPopup = (popup) => {
     if(popup || this.props.favorites.length) {
@@ -112,7 +106,7 @@ class CardContainer extends Component {
       popup = <NoFavorites showPopup={this.showPopup}/>
     }
     return (
-      <div>
+      <div className='scroll'>
         {popup}
         <Filter toggleSource={this.showPopup} changeCat={this.changeCat} searchMovies={this.searchMovies} browseAll={this.props.browseAll}/>
         <button className="page previous" onClick={this.newPage} value="previous"> Previous Page </button>

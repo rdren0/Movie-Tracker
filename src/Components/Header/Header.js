@@ -18,6 +18,7 @@ class Header extends Component {
     whatToRender =  
         <nav>
           <NavLink exact={true} to="/" activeClassName='current-nav' className='nav-button' onClick={this.props.browseAll}><h4>Browse</h4></NavLink>
+
           <NavLink activeClassName='current-nav' onClick={this.handleLogout} to="/Login" className='nav-button'><h4>Log Out</h4></NavLink>
         </nav>
   } else { 
