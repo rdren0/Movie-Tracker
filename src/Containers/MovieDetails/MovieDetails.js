@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Back from '../../Images/back.svg';
+import './MovieDetails.scss'
+
 
 
 const MovieDetails = ({

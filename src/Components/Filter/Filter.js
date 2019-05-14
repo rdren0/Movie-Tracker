@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import './Filter.scss'
+
 
 class Filter extends Component {
 constructor(){
@@ -30,7 +32,7 @@ constructor(){
           type="text"
           name="search"/> 
         <button className="search-button">Search</button>
-      <button className="clear-button" browseAll={this.props.browseAll}>Clear Search</button>
+      <button className="clear-button" onClick={this.props.browseAll}>Clear Search</button>
       </form>
         <select onChange={this.props.changeCat} className="drop-down">
           <option value="action" default>Action</option>
