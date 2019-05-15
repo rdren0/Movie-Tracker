@@ -1,45 +1,50 @@
-import React, {Component} from 'react';
-import './Filter.scss'
+import React, { Component } from "react";
+import "./Filter.scss";
 
 class Filter extends Component {
-constructor(){
-  super()
-  this.state={
-    searchWord: ''
+  constructor() {
+    super();
+    this.state = {
+      searchWord: ""
+    };
   }
-}
 
-  handleChange = (e) => {
+  handleChange = e => {
     let search = e.target.value;
-    this.setState({searchWord: search})
-  }
+    this.setState({ searchWord: search });
+  };
 
-  handleSubmit = (e) =>{
+  handleSubmit = e => {
     e.preventDefault();
-    this.props.searchMovies(this.state)
-  }
+    this.props.searchMovies(this.state);
+  };
 
   handleClear = () => {
-    this.setState({searchWord: ''})
-    this.props.browseAll()
-  }
+    this.setState({ searchWord: "" });
+    this.props.browseAll();
+  };
 
   render() {
     return (
-      <div className='filter-bar'>
-      <form onSubmit={this.handleSubmit} className='search'>
-        <input 
-          className="search-input"
-          onChange={this.handleChange}
-          value={this.state.searchWord}
-          placeholder="Search all Movies"
-          type="text"
-          name="search"/> 
-        <button className="search-button">Search</button>
-        <button className="search-button" onClick={this.handleClear}>Clear Search</button>
-      </form>
+      <div className="filter-bar">
+        <form onSubmit={this.handleSubmit} className="search">
+          <input
+            className="search-input"
+            onChange={this.handleChange}
+            value={this.state.searchWord}
+            placeholder="Search all Movies"
+            type="text"
+            name="search"
+          />
+          <button className="search-button">Search</button>
+          <button className="search-button" onClick={this.handleClear}>
+            Clear Search
+          </button>
+        </form>
         <select onChange={this.props.changeCat} className="drop-down">
-          <option value="action" default>Action</option>
+          <option value="action" default>
+            Action
+          </option>
           <option value="adventure">Adventure</option>
           <option value="animation">Animation</option>
           <option value="comedy">Comedy</option>

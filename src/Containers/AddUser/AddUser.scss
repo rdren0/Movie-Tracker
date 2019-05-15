@@ -1,4 +1,4 @@
-@import '../../Utilities/_Variables.scss';
+@import "../../Utilities/_Variables.scss";
 
 .signup-form {
   display: grid;
@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../../Images/main-bg.png');
+  background-image: url("../../Images/main-bg.png");
   background-size: cover;
   background-position: center;
 }
@@ -34,7 +34,7 @@
   text-align: center;
   color: $primary-color;
   background: $primary-color;
-  margin-top: 10px; 
+  margin-top: 10px;
   color: $main-background;
   text-decoration: none;
 
