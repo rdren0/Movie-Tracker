@@ -4,6 +4,7 @@ import{ moviesReducer } from './moviesReducer'
 import{ loggedInReducer } from './loggedInReducer'
 import{ favoritesReducer } from './favoritesReducer'
 import{ currentUserReducer } from './currentUserReducer'
+import {mockDataResponse, mockDataResult, mockFavoriteResult, mockFavoriteResponse} from './mockData'
 import * as actions from "../actions";
 
 
@@ -51,23 +52,23 @@ describe('currentUserReducer', () => {
 })
 
  describe('favoritesReducer', () => {
-  it.("should set a movie as favorite", () => {
-    const favorited = false;
-    const expected = true;
+  it("should set a movie as favorite", () => {
+    const favorited = [];
+    const expected = mockFavoriteResult;
     const initialState =  { favorited }
-    const result = favoritesReducer(initialState, actions.setFavorites(true));
+    const result = favoritesReducer(initialState, actions.setFavorites(mockFavoriteResponse));
     expect(result).toEqual(expected);
   });
 })
 
  describe('moviesReducer', () => {
   it("should add movies to state", () => {
-    const movies = [{title: 'yeah', favorite: false}];
-    const expected = [{title: 'yeah', favorite: false}, {title: 'yes', favorite: false}];
-    const initialState =  { movies } ;
-    const result = moviesReducer(initialState, actions.addMovies({title: 'yes', favorite: false, movies: [1,2,3]}));
-    expect(result).toEqual(expected);
-  });
+    const movies = [];
+    const expected = mockDataResult
+    const initialState = { movies } ;
+    const result = moviesReducer(initialState, actions.addMovies(mockDataResponse));
+    expect(result).toEqual(expected)
+  })
 })
 
 
