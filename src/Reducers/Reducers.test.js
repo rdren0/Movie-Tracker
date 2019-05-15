@@ -31,45 +31,41 @@ describe('pageReducer', () => {
 })
 
   describe('loggedInReducer', () => {
-  it("should increase the page when next is clicked", () => {
+  it("should change isLoggedIn from false to true", () => {
     const isLoggedIn = false;
     const expected = true;
     const initialState =  { isLoggedIn }
     const result = loggedInReducer(initialState, actions.isLoggedIn(true));
-
     expect(result).toEqual(expected);
   });
 })
 
 describe('currentUserReducer', () => {
-  it("should increase the page when next is clicked", () => {
+  it("should update current user on Login", () => {
     const user = {};
-    const expected = {user:{}};
+    const expected = {id: 1, name: "testing"};
     const initialState =  { user }
-    const result = currentUserReducer(initialState, actions.setFavorites({user:{}}));
-
+    const result = currentUserReducer(initialState, actions.userLogin(expected));
     expect(result).toEqual(expected);
   });
 })
 
  describe('favoritesReducer', () => {
-  it.skip("should increase the page when next is clicked", () => {
+  it.("should set a movie as favorite", () => {
     const favorited = false;
     const expected = true;
     const initialState =  { favorited }
     const result = favoritesReducer(initialState, actions.setFavorites(true));
-    // expectation
     expect(result).toEqual(expected);
   });
 })
 
  describe('moviesReducer', () => {
-  it.skip("should increase the page when next is clicked", () => {
+  it("should add movies to state", () => {
     const movies = [{title: 'yeah', favorite: false}];
     const expected = [{title: 'yeah', favorite: false}, {title: 'yes', favorite: false}];
     const initialState =  { movies } ;
-    const result = moviesReducer(initialState, actions.addMovies({title: 'yes', favorite: false}));
-
+    const result = moviesReducer(initialState, actions.addMovies({title: 'yes', favorite: false, movies: [1,2,3]}));
     expect(result).toEqual(expected);
   });
 })
