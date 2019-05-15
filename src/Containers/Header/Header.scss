@@ -1,4 +1,4 @@
-@import '../../Utilities/_Variables.scss';
+@import "../../Utilities/_Variables.scss";
 
 img {
   height: 150px;
@@ -41,7 +41,7 @@ img {
   font-size: 22px;
 
   &:last-child {
-    border-right: 1px solid $main-text
+    border-right: 1px solid $main-text;
   }
 
   &:hover {
@@ -50,7 +50,5 @@ img {
 }
 
 .current-nav {
-    background: $primary-hover;
-  }
-
-
+  background: $primary-hover;
+}
