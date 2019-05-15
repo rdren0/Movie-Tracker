@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header should match snapshot with all correct data passed through 1`] = `ShallowWrapper {}`;
+
+exports[`Header should match snapshot with all correct data passed through 2`] = `ShallowWrapper {}`;

@@ -19,7 +19,7 @@ export class Header extends Component {
         <nav>
           <NavLink exact={true} to="/" activeClassName='current-nav' className='nav-button' onClick={() => this.props.browseAll()}><h4>Browse</h4></NavLink>
           <NavLink activeClassName='current-nav' to="/Favorites" className='nav-button'><h4>Favorites</h4></NavLink>
-          <NavLink activeClassName='current-nav' onClick={this.handleLogout} to="/Login" className='nav-button'><h4>Log Out</h4></NavLink>
+          <NavLink activeClassName='current-nav' onClick={this.handleLogout} to="/Login" className='nav-button log-out'><h4>Log Out</h4></NavLink>
         </nav>
   } else { 
     whatToRender = 
@@ -39,11 +39,11 @@ export class Header extends Component {
   )}
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   isLoggedIn: state.isLoggedIn
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addCurrentUser: (user) => dispatch(userLogin(user))
 })
 
