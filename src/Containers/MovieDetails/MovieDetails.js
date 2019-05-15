@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Back from '../../Images/back.svg';
-import './MovieDetails.scss'
-
+import Back from "../../Images/back.svg";
+import "./MovieDetails.scss";
 
 const MovieDetails = ({
   vote_average,
@@ -35,9 +34,9 @@ const MovieDetails = ({
       </div>
       <div>
         <Link to="/" className="back-btn">
-          <img src={Back} className="back-button" />
+          <img alt="back-button" src={Back} className="back-button" />
         </Link>
-        </div>
+      </div>
     </div>
   );
 };

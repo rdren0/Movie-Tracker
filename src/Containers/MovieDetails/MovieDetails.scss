@@ -1,6 +1,6 @@
-@import '../../Utilities/_Variables.scss';
+@import "../../Utilities/_Variables.scss";
 
-.movie-details{
+.movie-details {
   display: grid;
   grid-template-columns: 1200px 1fr;
   background-color: $main-background;
@@ -8,7 +8,7 @@
   height: 100%;
 }
 
-.movie-grid{
+.movie-grid {
   display: inline;
   width: 1050px;
   display: grid;
@@ -17,17 +17,16 @@
   text-align: justify-all;
 }
 
-.alt-poster{
-  margin:20px;
+.alt-poster {
+  margin: 20px;
   margin-top: 40px;
   height: 65vh;
-
 }
 
-.detail-text{
+.detail-text {
   margin-top: 30px;
 }
 
-.back-button{
+.back-button {
   margin-top: 200px;
 }

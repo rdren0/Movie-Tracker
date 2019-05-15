@@ -1,5 +1,4 @@
-@import '../../Utilities/_Variables.scss';
-
+@import "../../Utilities/_Variables.scss";
 
 .login-form {
   display: grid;
@@ -7,9 +6,9 @@
   grid-template-rows: 1fr 1fr;
   width: 425px;
   margin-top: 25px;
-  grid-template-areas: 
-  "email password"
-  "button button";
+  grid-template-areas:
+    "email password"
+    "button button";
 
   input {
     padding: 5px;
@@ -37,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('../../Images/main-bg.png');
+  background-image: url("../../Images/main-bg.png");
   background-size: cover;
   background-position: center;
 }

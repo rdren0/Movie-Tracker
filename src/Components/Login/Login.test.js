@@ -2,7 +2,7 @@ import {Login}  from './Login.js'
 import { shallow, mount } from 'enzyme';
 import React from 'react';
 
-
+window.alert = jest.fn();
 let wrapper;
 let mockFunction = jest.fn()
 let fetchUserData = jest.fn()
@@ -39,5 +39,10 @@ describe('Login', () => {
     expect(fetch).toBeCalledWith(url,{"body": "{\"email\":\"\",\"password\":\"\",\"status\":\"\"}", "headers": {"Content-Type": "application/json"}, "method": "POST"})
   })
 
-  // it('Should ')
+  it.skip('Should fetch users favorites', () => {
+    let id = 1
+    let url = 'http://localhost:3000/api/users/1/favorites';
+    wrapper.instance().getFavoriteMovies(id)
+    expect(fetch).toHaveBeenCalledWith(url) 
+  })
 })
