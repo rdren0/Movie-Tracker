@@ -1,5 +1,4 @@
 import React from "react";
-import ShowMore from "react-show-more";
 import { checkIfFavorited } from "../../Utilities/Cleaners";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -10,11 +9,7 @@ const MovieCard = movie => {
   isFavorited = checkIfFavorited(movie, movie.favorites);
   movie = { ...movie, favorited: isFavorited };
   const {
-    vote_average,
     title,
-    release_date,
-    poster_path,
-    overview,
     favoriteMovie,
     favorited,
     deleteFavorite,
@@ -42,13 +37,9 @@ const MovieCard = movie => {
       </button>
     );
   }
-  let imgUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-  let divStyle = {
-    backgroundImage: "url(" + imgUrl + ")"
-  };
   return (
     <div className="movie-card">
-      <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+      <img alt="movie poster" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
       <div className="movie-overview">
         <h4 className="movie-title">{title}</h4>
         {whichFavoriteButton}

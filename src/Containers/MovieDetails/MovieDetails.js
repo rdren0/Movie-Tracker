@@ -34,7 +34,7 @@ const MovieDetails = ({
       </div>
       <div>
         <Link to="/" className="back-btn">
-          <img src={Back} className="back-button" />
+          <img alt="back-button" src={Back} className="back-button" />
         </Link>
       </div>
     </div>
