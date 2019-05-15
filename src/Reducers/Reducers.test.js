@@ -51,7 +51,7 @@ describe('currentUserReducer', () => {
 })
 
  describe('favoritesReducer', () => {
-  it.("should set a movie as favorite", () => {
+  it("should set a movie as favorite", () => {
     const favorited = false;
     const expected = true;
     const initialState =  { favorited }
