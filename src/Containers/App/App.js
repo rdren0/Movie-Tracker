@@ -12,7 +12,7 @@ import { addMovies, changeCategory } from '../../Actions';
 import { connect } from 'react-redux';
 import Favorites from '../../Containers/Favorites/Favorites.js'
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props)
     this.state ={
