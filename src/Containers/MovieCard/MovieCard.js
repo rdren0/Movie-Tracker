@@ -20,10 +20,6 @@ import './MovieCard.scss';
   } else {
     whichFavoriteButton = <button className="movie-buttons" onClick={() => deleteFavorite(movie)}>Delete Favorite</button>
   }
-  let imgUrl = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-  let divStyle = {
-    backgroundImage: 'url(' + imgUrl + ')'
-  }
   return (
       <div className='movie-card' >
         <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
