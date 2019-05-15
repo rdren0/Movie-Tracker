@@ -24,7 +24,6 @@ describe('MovieDetails', () => {
     const wrapper = shallow(
       <MovieDetails selectedMovie={mockSelectedMovie} />
     )
-
     expect(wrapper).toMatchSnapshot()
   })
 })
