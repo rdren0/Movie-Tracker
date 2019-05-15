@@ -18,7 +18,6 @@ const MovieDetails = ({
   isLoggedIn,
   id
 }) => {
-  console.log({ title });
   return (
     <div className="movie-details">
       <div className="movie-grid">

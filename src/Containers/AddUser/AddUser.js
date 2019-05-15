@@ -4,7 +4,7 @@ import { fetchUserData } from '../../APICalls/APICalls';
 import { Link } from 'react-router-dom';
 
 
-class AddUser extends Component {
+export class AddUser extends Component {
   constructor(props) {
     super(props);
     this.state = {

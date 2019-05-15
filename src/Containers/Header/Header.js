@@ -5,7 +5,7 @@ import './Header.scss'
 import { connect } from 'react-redux'
 import { userLogin, isLoggedIn } from '../../Actions';
 
-class Header extends Component {
+export class Header extends Component {
 
   handleLogout = () => {
     this.props.isLoggedIn(false)
