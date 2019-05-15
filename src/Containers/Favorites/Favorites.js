@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { fetchUserData } from "../../APICalls/APICalls";
 import { setFavorites } from "../../Actions";
 
-class Favorites extends Component {
+export class Favorites extends Component {
   constructor() {
     super();
     this.state = {};
@@ -50,7 +50,7 @@ class Favorites extends Component {
 
   render() {
     let whatToRender;
-    if (!this.props.favorites.length) {
+    if (this.props.favorites && !this.props.favorites.length) {
       whatToRender = (
         <div>
           <p>

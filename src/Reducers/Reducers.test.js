@@ -59,7 +59,6 @@ describe("currentUserReducer", () => {
     expect(result).toEqual(expected);
   });
 });
-
 describe("favoritesReducer", () => {
   it("should set a movie as favorite", () => {
     const favorited = [];

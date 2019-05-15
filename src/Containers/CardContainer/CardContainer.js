@@ -16,7 +16,7 @@ import {
 } from "../../Actions";
 import NoFavorites from "../NoFavorites/NoFavorites";
 
-class CardContainer extends Component {
+export class CardContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,8 +66,9 @@ class CardContainer extends Component {
       .catch(error => console.log(error));
   };
 
-  displayCards = () =>
-    this.props.movies.map(movie => (
+  displayCards = (movies) => {
+  if(movies) {
+    return movies.map(movie => (
       <MovieCard
         {...movie}
         showPopup={this.showPopup}
@@ -76,7 +77,8 @@ class CardContainer extends Component {
         favoriteMovie={this.favoriteMovie}
         key={movie.id}
       />
-    ));
+    ))
+  }};
 
   showPopup = popup => {
     if (popup || this.props.favorites.length) {
@@ -142,7 +144,7 @@ class CardContainer extends Component {
           {" "}
           Next Page{" "}
         </button>
-        <div className="card-container">{this.displayCards()}</div>
+        <div className="card-container">{this.displayCards(this.props.movies)}</div>
         <button
           className="page previous"
           onClick={this.newPage}

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import "./NoFavorites.scss";
 
-class NoFavorites extends Component {
+export class NoFavorites extends Component {
   render() {
     let whatToRender;
     if (!this.props.isLoggedIn) {
