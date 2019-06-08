@@ -28,8 +28,10 @@ npm run test will allow you to see the test results
 
 
 #### Log In Page
+![2019-06-08 13 10 50](https://user-images.githubusercontent.com/39016273/59151364-1f7d3880-89ef-11e9-80f0-c8377e0ea159.gif)
+![2019-06-08 13 11 49](https://user-images.githubusercontent.com/39016273/59151368-2c019100-89ef-11e9-84f9-59ceec0a8c9c.gif)
+![2019-06-08 13 12 15](https://user-images.githubusercontent.com/39016273/59151370-3885e980-89ef-11e9-830b-95a46e07818c.gif)
 
-<img width="1417" alt="Screen Shot 2019-06-08 at 1 08 05 PM" src="https://user-images.githubusercontent.com/39016273/59151344-7a626000-89ee-11e9-826d-757093bb971f.png">
 
 
 #### Favorites Page
