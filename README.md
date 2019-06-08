@@ -15,7 +15,9 @@ Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Information on how to run the backend can be found here : 
-[https://github.com/rdren0/movie-tracker-1](Backend Repo)
+  
+  [https://github.com/rdren0/movie-tracker-1](Backend Repo)
+  [Backend Repo](https://github.com/rdren0/movie-tracker-1)
 
 #### Main Browse Page
 
