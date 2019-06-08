@@ -14,6 +14,9 @@ In the project directory, you need to run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+Information on how to run the backend can be found here : 
+[https://github.com/rdren0/movie-tracker-1](Backend Repo)
+
 #### Main Browse Page
 
 ![2019-06-08 13 01 51](https://user-images.githubusercontent.com/39016273/59151283-ab8e6080-89ed-11e9-8b56-71a3fa7def2f.gif)
