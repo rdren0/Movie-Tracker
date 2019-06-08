@@ -10,17 +10,6 @@ In the project directory, please run:
 `npm install`
 `npm start`
 
-npm start will run the app in the development mode. When the server is running, open http://localhost:3000 to view it in the browser.
-
-If any alterations to the code are made, then the page will refresh.
-
-## Testing
-
-App is tested with Jest and Enzyme
-
-`npm run test`
-
-npm run test will allow you to see the test results
 
 #### Main Browse Page
 
