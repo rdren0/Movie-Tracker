@@ -22,11 +22,11 @@ App is tested with Jest and Enzyme
 
 npm run test will allow you to see the test results
 
-## Screen Shots
-
 #### Main Browse Page
+![2019-06-08 12 54 24](https://user-images.githubusercontent.com/39016273/59151227-b3013a00-89ec-11e9-9f8c-a31b3f3b8607.gif)
+![2019-06-08 13 01 51](https://user-images.githubusercontent.com/39016273/59151283-ab8e6080-89ed-11e9-8b56-71a3fa7def2f.gif)
 
-![MainBrowsePage](https://github.com/rdren0/Movie-Tracker/blob/production/src/Images/ss1.png)
+
 
 #### Log In Page
 
