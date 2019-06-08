@@ -1,15 +1,18 @@
 # Movie Tracker
 Browse one of the largest film and televsion databases through our Movie Tracker web application. With Movie Tracker you can create an account, filter and search movie results, and even favorite movies you enjoy.
 
-## Installation
 
-`git clone https://github.com/rdren0/Movie-Tracker.git`
+By: 
+* Rachael Drennan https://github.com/rdren0
+* Joe Johnson https://github.com/joejohnson3985
 
-In the project directory, please run:
 
-`npm install`
-`npm start`
+In the project directory, you need to run:
+### `npm i`
 
+### `npm start`
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 #### Main Browse Page
 
