@@ -27,8 +27,9 @@ npm run test will allow you to see the test results
 ![2019-06-08 13 01 51](https://user-images.githubusercontent.com/39016273/59151283-ab8e6080-89ed-11e9-8b56-71a3fa7def2f.gif)
 
 
-
 #### Log In Page
+
+<img width="1417" alt="Screen Shot 2019-06-08 at 1 08 05 PM" src="https://user-images.githubusercontent.com/39016273/59151344-7a626000-89ee-11e9-826d-757093bb971f.png">
 
 
 #### Favorites Page
